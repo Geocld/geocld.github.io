@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1 {width: 500px; height: 500px; margin: 30px auto; border: 1px black solid;word-wrap: break-word;}
+	li {list-style: none; border-bottom: 1px black dashed; opacity: 0;filter: alpha(opacity:0); padding: 5px;}
+	</style>
+	<script src="move.js"></script>
+	<script>
+	window.onload = function ()
+	{
+		var oTxt = document.getElementById('txt');
+		var oBtn = document.getElementById('btn');
+		var oDiv = document.getElementById('div1');
+
+		oBtn.onclick = function()
+		{
+			var txt = oTxt.value;
+			var oLi = document.createElement('li');
+			var aLi = document.getElementsByTagName('li');
+			oLi.innerHTML = txt;
+			if (aLi.length > 0)
+			{
+				oDiv.insertBefore(oLi,aLi[0]);
+			}
+			else
+			{
+				oDiv.appendChild(oLi);
+			}
+			oTxt.value = '';
+			
+			var iHeight = oLi.offsetHeight;
+			oLi.style.height = '0';
+			startMove(oLi, {height: iHeight},function (){
+				startMove(oLi, {opacity: 100});
+			});
+		}
+	}
+	</script>
+</head>
+<body>
+	<textarea name="微博内容" cols="50" rows="10" id="txt"></textarea><br>
+	<input id="btn" type="button" value="发布">
+	<div id="div1"></div>
+</body>
+</html>

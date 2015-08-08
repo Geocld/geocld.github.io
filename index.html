@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div {width: 100px; height: 100px; background: green; position: absolute;top: 10px; left:-100px;}
+	div span{width: 20px; height: 60px; background: red; position: absolute; top: 20px; left: 100px; line-height: 20px;}
+	</style>
+	<script>
+	var timer = null;//此处需写在功能函数之外
+	function startMove(target)
+	{
+		var oDiv = document.getElementById('div1');
+
+		clearInterval(timer);
+		timer = setInterval(function()
+		{
+			var speed = 0;
+			if (oDiv.offsetLeft > target)
+			{
+				speed = -10;
+			}
+			else
+			{
+				speed = 10;
+			}
+			if(oDiv.offsetLeft != target)
+			{
+				oDiv.style.left = oDiv.offsetLeft + speed +'px';
+			}
+			else
+			{
+				clearInterval(timer);
+			}
+		},30);
+	}
+	</script>
+</head>
+<body>
+	<div id="div1" onmouseover="startMove(0)" onmouseout="startMove(-100)">人人网<span>分享到</span></div>
+</body>
+</html>

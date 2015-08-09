@@ -1,0 +1,9 @@
+<header class="site-header">
+    <ul>
+        {% for nav in site.navigations %}
+        {% if nav.title %}
+        <li><a href="{{ nav.href }}">{{ nav.title }}</a></li>
+        {% endif %}
+        {% endfor %}  
+    </ul>
+</header>

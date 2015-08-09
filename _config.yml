@@ -1,1 +1,41 @@
 encoding: utf-8
+# Site settings
+title: Lijiahao's Blog
+email: 375822331@qq.com
+description: "HTML,CSS Leaning"
+permalink: /:year/:month/:day/:title.html
+baseurl: ""
+url: ""
+atom-baseurl: ""
+author: "lijiahao"
+
+# Build settings
+# permalink: date
+
+highlighter: pygments
+markdown: redcarpet
+redcarpet:
+  extensions: [fenced_code_blocks,no_intra_emphasis,strikethrough,no_intra_emphasis,autolink,tables]
+
+#duoshuo
+  #comments :
+    #provider : duoshuo
+    #duoshuo :
+      #short_name : taizilongxu
+
+navigations:
+  - title: 首页
+    class: fa fa-list-ul
+    href: /index.html
+  - title: 博文
+    class: fa fa-tags
+    href: /archive/
+  - title: 分类
+    class: fa fa-user
+    href: /categories/
+  - title: 关于我
+    class: fa fa-film
+    href: /tags/
+  - title: Rss订阅
+    class: fa fa-rss
+    href: /atom.xml

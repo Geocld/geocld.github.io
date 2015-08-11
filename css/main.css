@@ -2,7 +2,7 @@
 
 * { margin: 0; padding: 0;}
 
-html, body {height: 100%;}
+html, body {height: 97%;}
 
 body {
     font-family: "微软雅黑", Helvetica, sans-serif;
@@ -29,7 +29,7 @@ a:visited {color: #7c7c7c;}
 .site-header ul{
     list-style: none;
     position: absolute;
-    left: 120px;
+    right: 320px;
 }
 
 .site-header ul li{
@@ -48,89 +48,37 @@ a:visited {color: #7c7c7c;}
     background: #1ABC9C;
 }
 
-/*Footer*/
-.wrap:before,
-.wrap:after { content:""; display:table; }
-.wrap:after { clear: both; }
-.wrap {
-    max-width: 730px;
-    margin: 0 auto;
-    zoom: 1;
-    text-align: left;
-}
-
-.site-footer{
-    position: relative;
-    border-top: 1px solid #e8e8e8;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    height: 50px;
-    clear: both;
-    font-size: 14px;
-}
-
-.site-footer .column {
-    float: left;
-    margin-bottom: 15px;
-}
-
-.footer-col-1{
-    width: 270px;
-    width: -webkit-calc(35% - 10px);
-    width: -moz-calc(35% - 10px);
-    width: -o-calc(35% - 10px);
-    width: calc(35% - 10px);
-    margin-top: 27px;
-}
-
-.footer-col-1 a{
-    color:#A8A8A8;
-    transition:padding 0.6s;
-    padding-left:60px;
-}
-
-.footer-col-1 a:hover {
-    color: #dd1144;
-    text-decoration: none;
-    padding-left: 80px;
-}
-
-.footer-col-2{
-    float:right;
-    margin-top:27px;
-    padding-right:30px;
-}
-
-.footer-col-2 a {
-    color: #A8A8A8;
-}
-
-.github-icon-svg {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-}
-.github {
+/* #navbar1 {
     position: absolute;
-    transition: transform 0.5s ease-out;
-    top: 20px;
+    left: 100px;
+} */
+
+#navbar1 ul li {
+    text-align: center;
 }
 
-.github:hover {
-    transform: rotateZ(360deg);
+/*Footer*/
+.foot {
+    width: 170px;
+    margin: 0 auto;
 }
 
-.site-footer p {
-    letter-spacing: -.3px;
-    color: #B4B4B4;
+/*page content style*/
+.page-content {
+    padding-top: 70px;
+    background: #fbfbfb;
+    padding-bottom: 0px;
+    height: auto;
+    min-height: 100%;
 }
+
+.page-content .wrap{padding-bottom: 50px;}
 
 /*Home*/
 .home {
     padding-left: 25px;
     padding-right: 50px;
     padding-bottom: 50px;
-    height: 450px;
 }
 
 .home h1 {margin-bottom: 1px;}

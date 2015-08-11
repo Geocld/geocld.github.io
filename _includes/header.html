@@ -1,9 +1,23 @@
-<header class="site-header">
-    <ul>
-        {% for nav in site.navigations %}
-        {% if nav.title %}
-        <li><a href="{{ nav.href }}">{{ nav.title }}</a></li>
-        {% endif %}
-        {% endfor %}  
-    </ul>
-</header>
+<nav id="nav1" class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button style="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar1">
+			<ul class="nav navbar-nav">
+				{% for nav in site.navigations %}
+	    		{% if nav.title %}
+	    		<li><a href="{{ nav.href }}">{{ nav.title }}</a></li>
+	    		{% endif %}
+	    		{% endfor %}  
+			</ul>
+		</div>
+	</div>
+</nav>
+
+

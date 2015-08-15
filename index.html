@@ -1,29 +1,26 @@
 ---
 layout: default
 ---
-<div class="home">
-  {% for page in site.categories.life limit: 1 %}
-  <header class="post-header">
-    <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-    <p class="meta"><i class="fa fa-calendar"></i> {{ page.date | date: "%Y-%m-%d" }}&nbsp&nbsp&nbsp<i class="fa fa-folder-open"></i>{% if page.category %} <a href="/categories/#{{page.category}}">{{ page.category }}</a> {% endif %}&nbsp&nbsp&nbsp<i class="fa fa-tags"></i>&nbsp{% for tag in page.tags %}&nbsp<a href="/tags/#{{ tag }}">{{ tag }}</a>{% endfor %}</p>
-  </header>
-  <article class="post-content">
-  {{ page.content }}
-  </article>
-  {% endfor %}
-  <ul class="posts">
-    <!-- <li class="listing-seperator">Yesterday you said tomorrow</li> -->
-  {% capture month %}{{ site.time | date:"%m"}}{% endcapture %}
-  {% for post in site.posts %}
-    {% capture m %}{{ post.date | date:"%m"}}{% endcapture %}
-    {% if month != m %}
-    {% break %}
-    {% endif %}
-    <li class="listing-item">
-      <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-      <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-    <li class="listing-seperator"><a href="/archive/">查看更多</a></li>
-  </ul>
+<div id="imgDiv">
+  <img src="../img/me.jpg" alt="140x140" class="img-rounded" style="width:240px; height=240px; margin-top:5px;">
 </div>
+  
+<div class="container nocontainer" style="padding:0 20%;">
+  <div class="rows">
+    <div id="div1" class="col-xs-12">
+      <h3>个人说明</h3>
+      <ul>
+        <li>热爱编程、热爱前端开发的菜鸟</li>
+        <li>2014年本科毕业，业余充电编程知识</li>
+        <li>热爱分享，希望结交更多志同道合的朋友共同进步</li>
+      </ul>
+      <h3>欢迎交流</h3>
+      <ul>
+        <li>网站:</li>
+        <li>邮箱:</li>
+        <li>Github:</li>
+      </ul>
+    </div>
+  </div>
+</div>
+  

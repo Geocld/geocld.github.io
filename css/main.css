@@ -2,13 +2,13 @@
 
 * { margin: 0; padding: 0;}
 
-html, body {height: 97%;}
+html, body {height: 100%;}
 
 body {
     font-family: "微软雅黑", Helvetica, sans-serif;
     line-height: 1.6;
     font-weight: 300;
-    background-color: #fdfdfd;
+    background-color: #eee;
 }
 
 h1, h2, h3, h4, h5, h6 {font-size: 100%; font-weight: 400;}
@@ -17,71 +17,47 @@ a {color: #7c7c7c; text-decoration: none;}
 a:hover {color: #000;}
 a:visited {color: #7c7c7c;}
 
+.container {
+    background-color: #fff;
+    margin: 5px auto;
+}
+.nocontainer {
+    background-color: #eee;
+}
 /*Header*/
-.site-header {
-    width: 100%;
-    height: 50px;
-    margin: 0px auto;
+#nav1 {
     background: #465653;
-    position: relative;
 }
 
-.site-header ul{
-    list-style: none;
-    position: absolute;
-    right: 320px;
-}
-
-.site-header ul li{
-    color: #FFFFFF;
-    float: left;
-    line-height: 50px;
-    width: 80px;
-    text-align: center;
-}
-
-.site-header ul li a{
-    color: #fff;
-}
-
-.site-header ul li:hover{
-    background: #1ABC9C;
-}
-
-/* #navbar1 {
-    position: absolute;
-    left: 100px;
-} */
+#navbar1 ul{
+    margin-right: 10%;
+    margin-left: 10%;
+} 
 
 #navbar1 ul li {
     text-align: center;
 }
 
+#navbar1 ul li a{
+    color: #fff;
+}
+
+#navbar1 ul li:hover {
+    background: #17A388;
+}
+
 /*Footer*/
+#footDiv {
+    width: 100%;
+    height: 50px;
+    background: #F5F5F5;
+}
+
 .foot {
     width: 170px;
+    padding-top: 15px;
     margin: 0 auto;
-}
-
-/*page content style*/
-.page-content {
-    padding-top: 70px;
-    background: #fbfbfb;
-    padding-bottom: 0px;
-    height: auto;
-    min-height: 100%;
-}
-
-.page-content .wrap{padding-bottom: 50px;}
-
-/*Home*/
-.home {
-    padding-left: 25px;
-    padding-right: 50px;
-    padding-bottom: 50px;
-}
-
-.home h1 {margin-bottom: 1px;}
+} 
 
 /*archive*/
 .posts {
@@ -189,4 +165,24 @@ time {font-family: "Ubuntu", monospace;}
     margin: 20px 0;
     font-size: 16px;
     line-height: 1.5;
+}
+
+/*index*/
+#imgDiv {
+    width:240px;
+    margin: 10px auto;
+}
+
+#div1 {
+    //width: 60%;
+
+}
+
+#div1 ul {
+    border: 1px solid rgb(226,222,222);
+    border-radius: 10px;
+    list-style-position: inside;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0.5em 1em;
 }

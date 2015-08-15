@@ -6,6 +6,30 @@
 	<div>
 		{{ content }}
 	</div>
+	<p id="totop">
+		<a href=" ">
+			<span></span>返回顶部
+		</a>
+	</p>
 	{% include footer.html %}
+	<!-- To Top -->
+	<script>
+	$(function(){
+		$(window).scroll(function(){
+			if ($(window).scrollTop() > 200)
+			{
+				$("#totop").fadeIn(1000);
+			}
+			else
+			{
+				$("#totop").fadeOut(1000);
+			}
+		});
+		$("#totop").click(function(){
+			$("body,html").animate({scrollTop: 0}, 500);
+			return false;
+		})
+	})
+	</script>
 </body>
 </html>

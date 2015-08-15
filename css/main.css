@@ -98,6 +98,36 @@ a:visited {color: #7c7c7c;}
 
 time {font-family: "Ubuntu", monospace;}
 
+/*totop*/
+#totop {
+    position: fixed;
+    bottom: 10%;
+    right: 0;
+    display: none;
+}
+
+#totop a {
+    text-align: center;
+    text-decoration: none;
+    color: #d1d1d1;
+    display: block;
+    width: 64px;
+    transition: color 1s;
+}
+
+#totop a:hover {
+    color: #979797;
+}
+
+#totop a span {
+    background:  transparent url(../img/totop.png) no-repeat 0px 10px;
+    display: block;
+    height: 64px;
+    width: 56px;
+    margin-top: 5px;
+    margin-left: 6px;
+}
+
 /*category*/
 .category {
     line-height: 1.4;
@@ -183,6 +213,7 @@ time {font-family: "Ubuntu", monospace;}
     border-radius: 10px;
     list-style-position: inside;
     font-size: 16px;
-    line-height: 24px;
-    padding: 0.5em 1em;
+    line-height: 26px;
+    padding: 1em 1.5em;
+    overflow: hidden;
 }

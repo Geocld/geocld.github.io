@@ -185,6 +185,16 @@ time {font-family: "Ubuntu", monospace;}
     color: #333;
 }
 
+.post-header .meta {
+    font-size: 13px;
+    color: #818181;
+}
+
+.post-header .meta .pre {
+    font-weight: bold;
+    color: #333;
+}
+
 .post-content {
     font-size: 14px;
     line-height: 1.6;
@@ -203,9 +213,9 @@ time {font-family: "Ubuntu", monospace;}
     margin: 10px auto;
 }
 
-#div1 {
-    //width: 60%;
-
+#indexDiv {
+    width: 500px;
+    margin: 0 auto;
 }
 
 #div1 ul {
@@ -216,4 +226,89 @@ time {font-family: "Ubuntu", monospace;}
     line-height: 26px;
     padding: 1em 1.5em;
     overflow: hidden;
+}
+
+/*tests*/
+.row{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+[class*="col-"]{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#test1, #test2, #test3,#test4,#test5,#test6,#test7 {
+    opacity: 0.5;
+    padding: 5px;
+}
+
+#test1:hover{
+    opacity: 1;
+}
+
+#test2:hover{
+    opacity: 1;
+}
+
+#test3:hover{
+    opacity: 1;
+}
+
+#test4:hover{
+    opacity: 1;
+}
+
+#test5:hover{
+    opacity: 1;
+}
+
+#test6:hover{
+    opacity: 1;
+}
+
+#test7:hover{
+    opacity: 1;
+}
+
+#test1 {
+    background: red;
+}
+
+#test2 {
+    background: yellow;
+}
+
+#test3 {
+    background: green;
+}
+
+#test4 {
+    background: #eee;
+}
+
+#test5 {
+    background: #eee;
+}
+
+#test6 {
+    background: #eee;
+}
+
+#test7 {
+    background: #eee;
+}
+
+/*media queries */
+@media (max-width: 767px) {
+    #indexDiv {
+        width: 230px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    #indexDiv {
+        width: 400px;
+        margin: 0 auto;
+    }
 }

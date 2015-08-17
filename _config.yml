@@ -33,9 +33,12 @@ navigations:
   - title: 分类
     class: fa fa-user
     href: /categories/
-  - title: 关于我
+  - title: 标签
     class: fa fa-film
     href: /tags/
+  - title: 我的小练习
+    class: fa fa-tests
+    href: /tests.html
   - title: Rss订阅
     class: fa fa-rss
     href: /atom.xml

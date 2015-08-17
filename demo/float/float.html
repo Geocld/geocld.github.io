@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对联式悬浮框</title>
+	<style>
+	#div1 {width: 100px; height: 150px; background: red; position: absolute; right: 0; top: 250px; }
+	#div2 {width: 100px; height: 150px; background: red; position: absolute; left: 0; top: 250px; }
+	</style>
+	<script src="move.js"></script>
+	<script>
+	window.onscroll = function ()
+	{
+		var oDiv1 = document.getElementById('div1');
+		var oDiv2 = document.getElementById('div2');
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+		var itarget = parseInt((document.documentElement.clientHeight - oDiv1.offsetHeight) / 2 + scrollTop);
+		startMove(oDiv1,{top:itarget});
+		startMove(oDiv2,{top:itarget});
+	}
+	</script>
+</head>
+<body style="height: 2000px;">
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

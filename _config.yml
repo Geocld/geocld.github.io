@@ -1,6 +1,6 @@
 encoding: utf-8
 # Site settings
-title: Lijiahao's Blog
+title: 627围观站
 email: 375822331@qq.com
 description: "HTML,CSS Leaning"
 permalink: /:year/:month/:day/:title.html
@@ -18,10 +18,10 @@ redcarpet:
   extensions: [fenced_code_blocks,no_intra_emphasis,strikethrough,no_intra_emphasis,autolink,tables]
 
 #duoshuo
-  #comments :
-    #provider : duoshuo
-    #duoshuo :
-      #short_name : taizilongxu
+  comments :
+    provider : duoshuo
+    duoshuo :
+      short_name : geocld
 
 navigations:
   - title: 首页

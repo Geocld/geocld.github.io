@@ -4,11 +4,13 @@ layout: page
 permalink: /tags/
 ---
 
-<div id='tag_cloud'>
+<div id="tag_cloud" style="position: relative; width: auto; height: 200px;">
     {% for tag in site.tags %}
-    <a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
+    <a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}" style="position: absolute;">{{ tag[0] }}</a>
     {% endfor %}
 </div>
+
+<div style="width: 100%; height: 1px; background: black;"></div>
 
 <ul class="listing">
     {% for tag in site.tags %}
@@ -22,14 +24,12 @@ permalink: /tags/
     {% endfor %}
 </ul>
 
-<script src="/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.windstagball.js" type="text/javascript" charset="utf-8"></script>
 <script language="javascript">
-$.fn.tagcloud.defaults = {
-size: {start: 1, end: 1, unit: 'em'},
-      color: {start: '#f8e0e6', end: '#ff3333'}
-};
-
-$(function () {
-        $('#tag_cloud a').tagcloud();
+   $(document).ready(function() {
+    $("#tag_cloud").windstagball({
+            radius:120,
+            speed:10
         });
+    });
 </script>

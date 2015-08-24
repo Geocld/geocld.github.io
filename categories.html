@@ -10,7 +10,7 @@ permalink: /categories/
     {% endfor %}
     </p>
 </div>
-<hr>
+<div style="width: 100%; height: 1px; background: black;"></div>
 {% for category in site.categories %}
 <p><a name="{{category | first }}" href="#{{ category | first }}">{{ category | first }}</a><span  class="category-number">{{ category | last | size }}</span></p>
 <ul class="arc-list">

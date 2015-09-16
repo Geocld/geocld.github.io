@@ -26,7 +26,9 @@ tag: [JavaScript]
 	};
 
 例子中创建一个名为Student的函数，该函数与原型对象的关系如下图：
+
 ![](http://i.imgur.com/Io5db1a.jpg)
+
 左侧是我们创建的Student函数（也可以称为构造函数），函数内自动生成一个prototype属性，该属性指向右侧Student的原型对象，原型对象下有一个constructor属性，该属性也是一个指针，指会Student函数。
 
 如果对Student函数实例化，如下：
@@ -42,7 +44,9 @@ tag: [JavaScript]
 	var xiaohong = new Student();
 
 则构造函数、原型对象和实例的关系如下图：
+
 ![](http://i.imgur.com/htRrEQO.jpg)
+
 可以看到：当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性[[prototype]]，浏览器查看原型链是\__proto__），指向构造函数的原型对象。**这个连接关系存在于实例与构造函数的原型对象之间，而不是存在于实例和构造函数之间。**
 
 ###为什么使用原型prototype
@@ -95,6 +99,8 @@ tag: [JavaScript]
 属性按照原型链查找时先查找自身的属性，一旦查找到后就不会再进行后续查找；如果没有再查找原型，再没有，再往上查找，直到查到Object的原型上。
 
 参考资料：
-[深入理解JavaScript系列（5）：强大的原型和原型链](http://www.cnblogs.com/TomXu/archive/2012/01/05/2305453.html)
-[JavaScript教程-创建对象BY廖雪峰](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344997235247b53be560ab041a7b10360a567422a78000)
-《JavaScript高级程序设计》
+* [深入理解JavaScript系列（5）：强大的原型和原型链](http://www.cnblogs.com/TomXu/archive/2012/01/05/2305453.html)
+
+* [JavaScript教程-创建对象BY廖雪峰](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014344997235247b53be560ab041a7b10360a567422a78000)
+
+* 《JavaScript高级程序设计》

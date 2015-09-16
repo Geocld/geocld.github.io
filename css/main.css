@@ -233,7 +233,7 @@ time {font-family: "Ubuntu", monospace;}
     margin: 0 0 60px;
 }
 
-.post-content > * {
+.post-content > p {
     margin: 20px 0;
     font-size: 16px;
     line-height: 1.5;

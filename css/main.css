@@ -27,6 +27,17 @@ a:visited {color: #7c7c7c;}
     background-color: #eee;
 }
 
+.page-wrap {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+    height: 50px;
+}
+
 hr {
     color:black;
 }
@@ -203,7 +214,6 @@ time {font-family: "Ubuntu", monospace;}
 /*post style*/
 .post {
     width: 100%;
-    min-height: 550px;
 }
 
 .post-header {

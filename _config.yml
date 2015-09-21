@@ -1,8 +1,8 @@
 encoding: utf-8
 # Site settings
-title: lijiahao'blog
+title: 李佳浩的博客——一直在努力
 email: 375822331@qq.com
-description: "HTML,CSS Leaning"
+description: "HTML,CSS，JavaScript Leaning"
 permalink: /:year/:month/:day/:title.html
 baseurl: ""
 url: ""

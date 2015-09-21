@@ -136,7 +136,8 @@ a {text-decoration: none;}
 		font-size: 20px;
 	}
 	.meInfo {
-		margin-left: -130px;
+		margin-top: -120px;
+		margin-left: -140px;
 	}
 	.skill {
 		margin-left: -130px;
@@ -166,6 +167,6 @@ a {text-decoration: none;}
 		height: 70px;
 	}
 	.connect {
-		margin-left: -120px;
+		margin-left: -130px;
 	}
 }

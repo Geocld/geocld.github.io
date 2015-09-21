@@ -279,7 +279,7 @@ time {font-family: "Ubuntu", monospace;}
     padding-top: 15px;
     padding-bottom: 15px;
 }
-#test1, #test2, #test3,#test4,#test5,#test6,#test7 {
+#test1, #test2, #test3,#test4,#test5,#test6,#test7,#test8,#test9 {
     opacity: 0.5;
     padding: 5px;
 }
@@ -312,6 +312,14 @@ time {font-family: "Ubuntu", monospace;}
     opacity: 1;
 }
 
+#test8:hover{
+    opacity: 1;
+}
+
+#test9:hover{
+    opacity: 1;
+}
+
 #test1 {
     background: red;
 }
@@ -325,19 +333,27 @@ time {font-family: "Ubuntu", monospace;}
 }
 
 #test4 {
-    background: #eee;
+    background: #808000;
 }
 
 #test5 {
-    background: #eee;
+    background: #FF9900;
 }
 
 #test6 {
-    background: #eee;
+    background: #BFDA00;
 }
 
 #test7 {
-    background: #eee;
+    background: #2EBE21;
+}
+
+#test8 {
+    background: #adff2f;
+}
+
+#test9 {
+    background: #f0e68c;
 }
 
 /*comment*/

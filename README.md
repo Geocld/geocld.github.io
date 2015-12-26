@@ -1,2 +1,1 @@
-# lijiahao.github.com
-lijiahao's space
+lijiahao' blog

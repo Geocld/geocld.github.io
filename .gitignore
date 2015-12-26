@@ -1,4 +1,6 @@
-_site/
-.*.un~
-CNAME
-
+_site
+node_modules
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*.sh

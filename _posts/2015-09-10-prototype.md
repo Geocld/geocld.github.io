@@ -1,16 +1,14 @@
 ---
-layout: default
-layout: page
 layout: post
 title: JavaScript prototype的一些理解
-category: JavaScript
-tag: [JavaScript]
+subtitle: "关于JavaScript prototype的一些个人理解"
+date: 2015-09-10
+author: "lijiahao"
+tags: [JavaScript]
 ---
-
-#JavaScript prototype的一些理解#
 之前JavaScript的面向对象思想接触较少，近期在面向对象的专题复习中，之前只了解原型模式、构造函数模式+原型模式可以进行面向对象编程，且通过prototype属性，可以为构造函数提供共用的函数访问，但是对prototype的设计来由、JavaScript的内部实现方式知之甚少，通过参阅《JavaScript高级程序设计》和参考各种大牛的博客文章，个人对prototype的有一些新的理解。
 
-###理解原型对象和prototype###
+<h4>理解原型对象和prototype</h4>
 每个函数都有一个prototype（原型）属性，这个属性是一个**指针**，指向一个对象，JavaScript中这个对象就是**原型对象**，原型对象的用途是包含我们需要创建对象所具备的属性和方法。
 
 >JavaScript中，无论什么时候，只要创建了一个函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性包含一个指向prototype属于所在函数的指针。
@@ -49,7 +47,7 @@ tag: [JavaScript]
 
 可以看到：当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性[[prototype]]，浏览器查看原型链是\__proto__），指向构造函数的原型对象。**这个连接关系存在于实例与构造函数的原型对象之间，而不是存在于实例和构造函数之间。**
 
-###为什么使用原型prototype
+<h4>为什么使用原型prototype</h4>
 将共用的属性和方法放到原型prototype中，如此与构造函数没有直接关系，在创建实例时，多个实例共享共用属性和方法，最大限度的节省了内存，以下程序说明了这一点：
 
 	function Student(name) {
@@ -68,7 +66,7 @@ tag: [JavaScript]
 	xiaoming.share.push(2);
 	console.log(xiaoming.share);//[1,2]
 
-###原型链
+<h4>原型链</h4>
 当代码读取对象的某个属性时，会执行一遍搜索，目标是具有给定名字的属性。搜索首先从对象实例开始，如果在实例中找到该属性则会继续搜索实例prototype的原型，prototype原型没有搜索到，则到Object原型搜索，最后还是没搜索到，则返回null（也有些资料说是返回undefined），按照这个搜索路径递归就是**原型链**。
 
 上面Student的实例的原型链如下：

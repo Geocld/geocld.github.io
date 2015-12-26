@@ -1,48 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% include head.html %}
-<body>
-	{% include header.html %}
-	<div class="page-wrap">
-		{{ content }}
-	</div>
-	<p id="totop">
-		<a href=":javascript">
-			<span></span>返回顶部
-		</a>
-	</p>
-	{% include footer.html %}
-	<!-- To Top -->
-	<script>
-	$(function(){
-		$(window).scroll(function(){
-			if ($(window).scrollTop() > 200)
-			{
-				$("#totop").fadeIn(1000);
-			}
-			else
-			{
-				$("#totop").fadeOut(1000);
-			}
-		});
-		$("#totop").click(function(){
-			$("body,html").animate({scrollTop: 0}, 500);
-			return false;
-		})
-	})
-	</script>
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"geocld"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
+
+{% include head.html %}
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    {% include nav.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
 </body>
+
 </html>

@@ -44,6 +44,7 @@ tags: [vue.js,webpack]
 	awesome Vue.js
 
 基于这样一种MVVM开发模式，在配合vue的组件开发、数据绑定，在后续的app开发中会有极大的威力。
+
 <h4>webpack</h4>
 webpack是当前十分热门的模块加载器，它能把各种资源，如JS、css/less/sass、图片等都做为模块来使用和处理。在大型应用的开发过程中，将应用分割成一个个小模块，分工合作，然后再将小模块通过webpack进行整合，达到了“庖丁解牛”的效果，用一张图来说明webpack在作用，就是：
 ![](http://i.imgur.com/w4N78Sq.jpg)

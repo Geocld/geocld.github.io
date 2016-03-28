@@ -248,7 +248,7 @@ tags: [vue.js,webpack]
 
 	npm run dev
 
-在开发模式下运行项目，根据提示在浏览器打开`http://localhost:8080`即可看到项目：
+在开发模式下运行项目，根据提示在浏览器打开`http://localhost:8080`即可看到项目,在线[demo](http://geocld.github.io/demo/search/index.html)
 
 ![](http://i.imgur.com/thSza6Q.png)
 

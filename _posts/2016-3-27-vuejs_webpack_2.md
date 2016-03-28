@@ -1,6 +1,6 @@
 ---
 layout: post
-title: vue.js+webpack模块管理及组件开发学习笔记（二）
+title: vue.js+webpack模块管理及组件开发（二）
 subtitle: "项目开发所需模块以及通过npm下载后，就可以进一步配置webpack并进行模块开发了"
 date: 2016-3-27
 author: "lijiahao"

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: vue.js+webpack模块管理及组件开发学习笔记（一）
+title: vue.js+webpack模块管理及组件开发（一）
 subtitle: "组件化开发是前端的发展趋势，从当前最流行的模块管理工具及MVVM开发框架学习新的开发模式"
 date: 2016-3-14
 author: "lijiahao"

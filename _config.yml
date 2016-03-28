@@ -21,7 +21,8 @@ facebook_username:  false
 
 
 # Build settings
-highlighter: pygments
+#highlighter: pygments
+highlighter: rouge
 markdown: redcarpet
 permalink: pretty
 paginate: 10

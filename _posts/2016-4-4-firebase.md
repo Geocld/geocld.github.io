@@ -13,14 +13,17 @@ tags: [JavaScript]
 实例[Firebase数据预览](https://geocld-f.firebaseio.com/)
 
 ##什么是Firebase
+
 Firebase是Google旗下的一款实时数据云服务平台，旨在让APP提供一个实时响应的数据服务，该平台适用在IOS、Android、web前端等各种跨平台上，对于没有数据库处理经验的开发者，只需使用自己熟悉的语言将数据放在Firebase上，再通过Firebase提供的API即可实现实时数据同步。例如在web端，两个人在不同的电脑上打开同一个页面，其中一个人在网页上进行了操作导致页面上的数据有了变化，那么这个变化会通过Firebase处理后实时的在另一个人的页面上表现出来。
 
 ##引入Firebase
+
 在web端通过javascript操作Firebase。使用Firebase十分简单，只需在HTML添加script引用即可：
 
 	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 
 ##创建Firebase数据库
+
 登陆[Firebase官网](https://www.firebase.com)即可创建自定义数据库
 
 ![](http://i.imgur.com/q7GWpUR.png)
@@ -47,6 +50,7 @@ Firebase是Google旗下的一款实时数据云服务平台，旨在让APP提供
 到这里就很清楚了，通过javascript操作Firebase上的数据，实际上就是操作又Firebase返回的JSON数据。
 
 ##实例化Firebase
+
 回到我们的代码端，现在开始使用Firebase，首先对Firebase进行实例化：
 
 	var myDataRef = new Firebase('https://geocld-f.firebaseio.com/');
@@ -54,6 +58,7 @@ Firebase是Google旗下的一款实时数据云服务平台，旨在让APP提供
 这里`new Firebase(URL)`中的URL就是刚才我们创建的数据库的URL地址，这里将Firebase实例化为`myDataRef`变量。
 
 ##读取数据库内容
+
 这里将从Firebase数据库读取的内容放置在一个`div`内：
 
 	<div id='messagesDiv'></div>
@@ -77,6 +82,7 @@ Firebase是Google旗下的一款实时数据云服务平台，旨在让APP提供
 ![](http://i.imgur.com/IMvu33y.png)
 
 ##为数据库添加数据
+
 现在已经可以从数据库读取并返回数据，接下来就是实现数据的写入，Firebase的数据写入可以通过`set()`方法或`push()`方法，`set()`方法会将原数据库的内容全部清除，再重新写入用户的数据，`push()`则根据对象的key值写入数据，显然`push()`更适合用在列表添加项的使用。我们的demo实现的是追加个人信息，故使用`push()`实现：
 
 HTML：
@@ -111,6 +117,7 @@ javascript：
 
 
 ##概述
+
 到这里，本文针对web APP开发时遇到的数据读取、写入的实现使用Firebase进行了具体的操作，可以看到Firebase为开发者提供了及其便利和友好的API，开发者通过API可以很快的搭建具有数据响应的APP。
 
 由于本人也是刚接触Firebase，对Firebase的理解和使用也有待提高，同时本文也难免有认识不足之处，如有遗漏或错误，谨请指正。

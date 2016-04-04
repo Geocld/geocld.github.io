@@ -8,6 +8,10 @@ tags: [JavaScript]
 ---
 如今许多APP应用都有跨平台客户端，例如微信、evernote等，这些应用有IOS、Android和web客户端，当同一个应用同一个账户在不同的客户端同时登陆时，如果其中一个客户端发生数据变化，那么另一个客户端的数据也会同时发生变化，使用Firebase平台可将这类响应轻松实现，下面将从web端通过javascript操作Firebase来实现简单的数据响应。
 
+本文[在线demo](http://geocld.github.io/demo/use-firebase/firebase.html)
+
+实例[Firebase数据预览](https://geocld-f.firebaseio.com/)
+
 ##什么是Firebase
 Firebase是Google旗下的一款实时数据云服务平台，旨在让APP提供一个实时响应的数据服务，该平台适用在IOS、Android、web前端等各种跨平台上，对于没有数据库处理经验的开发者，只需使用自己熟悉的语言将数据放在Firebase上，再通过Firebase提供的API即可实现实时数据同步。例如在web端，两个人在不同的电脑上打开同一个页面，其中一个人在网页上进行了操作导致页面上的数据有了变化，那么这个变化会通过Firebase处理后实时的在另一个人的页面上表现出来。
 
@@ -104,6 +108,7 @@ javascript：
 
 ![](http://i.imgur.com/BxdjNb0.png)
 ![](http://i.imgur.com/NN8999Y.png)
+
 
 ##概述
 到这里，本文针对web APP开发时遇到的数据读取、写入的实现使用Firebase进行了具体的操作，可以看到Firebase为开发者提供了及其便利和友好的API，开发者通过API可以很快的搭建具有数据响应的APP。

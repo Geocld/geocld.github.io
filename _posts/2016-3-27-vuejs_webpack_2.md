@@ -8,7 +8,7 @@ tags: [vue.js,webpack]
 ---
 在上一篇博客中已经配置好`package.json`文件并通过`npm`安装了项目开发的依赖，接下来就需要配置`webpack`，通过`webpack`来对项目中的静态资源（样式文件、脚本、图片等）进行打包，并实现一系列的自动化构建，使开发更加便捷。
 
-##webpack配置
+<h4>webpack配置</h4>
 这里还是使用上一篇博客中提到的项目目录，在`./build`文件夹下有三个文件`webpack.base.config.js`、`webpack.dev.config.js`、`webpack.prod.config.js`这三个文件分别是webpack的基础配置、开发配置及生产配置。基础配置包括了webpack的最基本配置，包括入口文件、输入文件、加载器配置、插件配置等，这些配置将在运行项目时告诉webpack需要做些什么，下面是`webpack.base.config.js`的内容：
 
 	module.exports = {
@@ -93,7 +93,7 @@ tags: [vue.js,webpack]
 
 对于`webpack.dev.config.js`和`webpack.prod.config.js`，这两个分别是webpack在开发模式和生产模式下的配置。开发模式下通常会配置一些代码错误提示、map等调试信息，在运行项目时使用命令`npm run dev`时默认使用开发配置；生产配置则用于项目正式发布上线时生产正式`build.js`文件，在这种模式下不会产生调试信息，同时会压缩文件，在运行`npm run build`时使用这种配置。
 
-##组件开发
+<h4>组件开发</h4>
 在一个大型应用中，通常会把界面拆分为多个小组件，每个组件在同一个地方封装它的CSS样式、模板和javascript定义，这样即可以细化任务分配，有利于团队合作，又有利于组件的复用。
 
 在vue.js中,组件以`*.vue`文件呈现，称之为“单文本组件”，如下是一个组件文本的具体内容：
@@ -104,7 +104,7 @@ tags: [vue.js,webpack]
 
 同时针对`*.vue`文件格式，需要使用[vue-loader](https://github.com/vuejs/vue-loader)将`*.vue`转为webpack可以识别的文件格式。
 
-##实例
+<h4>实例</h4>
 模块已安装完毕、webpack也配置完成，同时也了解组件化开发的模式，接下来就在本篇博文和上一篇博文的基础上做一个实时检索的demo，实现通过webpack进行模块整合的组件开发。
 
 首先是`./index.html`:
@@ -256,7 +256,7 @@ tags: [vue.js,webpack]
 
 由于已经开启`热加载模式`，因此如果在开发模式下修改组件，浏览器会实时将改动呈现在页面上，无需重新刷新，十分方便。
 
-##结语
+<h4>结语</h4>
 本系列博客采用的vue组件开发脚手架已上传至github（[vue-webpack-vueLoader](https://github.com/Geocld/vue-webpack-vueLoader)），后续的项目开发可以以此为基础进行扩展(vue-router\vue-resource等)。
 
 不止Vue.js有组件开发，Angular.js、React.js也有一样的组件开发过程，不同的框架开发模式也大同小异，同时作为一种数据驱动的框架，搭配组件开发在数据逻辑较为复杂的情形下确实可以提高不少生产力，组件开发给项目开发带来的便利性还需在后续的实际项目中去体会和实践。

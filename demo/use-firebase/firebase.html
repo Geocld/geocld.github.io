@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>firebase</title>
+	<script src='firebase.js'></script>
+	<script src='jquery.js'></script>
+</head>
+<body>
+	<div id='messagesDiv'></div>
+	<input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='ageInput' placeholder='age'>
+    <input type='text' id='telInput' placeholder='tel'>
+	<script>
+		var myDataRef = new Firebase('https://geocld-f.firebaseio.com/');
+		$('#telInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var age = $('#ageInput').val();
+          var tel = $('#telInput').val();
+          //使用set方法将数据同步到database
+          //myDataRef.set('User ' + name + ' says ' + text);
+          //myDataRef.set({name: name, text: text});
+
+          //push方法也是设置数据，适合用在list中
+          myDataRef.push({name: name, age: age, tel: tel});
+
+          $('#messageInput').val('');
+        }
+      });
+		//on方法
+		myDataRef.on('child_added', function(snapshot) {
+			var message = snapshot.val();
+			displayMessage(message.name, message.age, message.tel);
+		});
+		function displayMessage(name, age, tel) {
+	        $('#messagesDiv').append('<div>name:'+name+',age:'+age+',tel:'+tel+'</div>');
+	        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	      };
+	</script>
+</body>
+</html>

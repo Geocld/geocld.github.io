@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RESTful API的前后端分离实现
-subtitle: "还在被前端页面代码上掺杂着后端模板代码弄得心烦意乱吗，试试使用基于RESTful API实现的前后端分离方案吧！"
+subtitle: ""
 date: 2016-8-27
 author: "lijiahao"
 tags: [Python,vue.js]

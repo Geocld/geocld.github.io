@@ -1,10 +1,10 @@
 ---
 layout: post
-title: RESTful API的前后端分离实现
-subtitle: ""
+title: VueFire-当Firebase遇上Vue.js
+subtitle: "VueFire为Vue.js和Firebase搭好桥梁"
 date: 2016-8-27
 author: "lijiahao"
-tags: [Python,vue.js]
+tags: [JavaScript,vue.js]
 ---
 在配合后端进行页面开发时，在非MVC时代，页面配合后端数据通常采用的是后端模板（如smarty、jinja等）+前端html进行开发，例如以下代码
 

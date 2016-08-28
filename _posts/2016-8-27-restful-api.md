@@ -4,7 +4,7 @@ title: RESTful API的前后端分离实现
 subtitle: "还在被前端页面代码上掺杂着后端模板代码弄得心烦意乱吗，试试使用基于RESTful API实现的前后端分离方案吧！"
 date: 2016-8-27
 author: "lijiahao"
-tags: [Python, vue.js]
+tags: [Python,vue.js]
 ---
 在配合后端进行页面开发时，在非MVC时代，页面配合后端数据通常采用的是后端模板（如smarty、jinja等）+前端html进行开发，例如以下代码
 

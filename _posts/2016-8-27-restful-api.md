@@ -8,11 +8,7 @@ tags: [Python,vue.js]
 ---
 在配合后端进行页面开发时，在非MVC时代，页面配合后端数据通常采用的是后端模板（如smarty、jinja等）+前端html进行开发，例如以下代码
 
-	<!-- 模板语言服务器端渲染 -->
-	<!--{% autoescape false %}-->
-	    <p>autoescaping is disabled here
-	    <p>{{ will_not_be_escaped }}
-	<!--{% endautoescape %}-->
+![](http://pics.hitour.cc/430ed9860e7fa6921b333f0be7597052.png)
 
 也就是采用的是前后端耦合的方式将后端数据渲染出来，这样的方式使得前端页面代码可读性差，在后端数据发生结构变化时，前端还得配合后端数据模板进行修改。使得页面的可维护性大大下降、开发效率下降，个人不是很喜欢这样的开发模式，相比之下，使用RESTful服务器为前端提供API进行页面开发是当前较为推荐的前后端分离模式。
 

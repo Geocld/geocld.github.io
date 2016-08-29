@@ -39,3 +39,183 @@ REST系统有如下特点：
 
 运行服务器，打开`http://127.0.0.1:5000/`即可看到index.html的页面内容。
 
+<h5>2.GET API访问数据</h5>
+
+根路由创建并且可以访问到`index.html`文件后，接下来就可以利用前端AJAX请求来获取服务器的数据了，因为本文不涉及数据库的使用和操作，所以我将服务器数据内容静态的写在`app.py`中，数据是一个tasks任务的json数据：
+
+```python
+#模拟json数据
+tasks = [
+    {
+        'id': 1,
+        'title': u'Buy groceries',
+        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
+        'done': False
+    },
+    {
+        'id': 2,
+        'title': u'Learn Python',
+        'description': u'Need to find a good Python tutorial on the web',
+        'done': False
+    }
+]
+```
+
+该tasks数据有几个字段，分别是：`id`作为每个task的唯一标识符，在后续的修改操作尤其重要；`title`是task的标题；`description`是task的具体内容；`done`表示task是否已完成。
+
+前端页面为了获取数据，可直接采用`GET`方式请求内容，这里将接口命名为`/todo/api/tasks`，请求方式为`GET`:
+
+```python
+#GET方法api
+@app.route('/todo/api/tasks', methods=['GET'])
+def getTasks():
+	return jsonify({'tasks': tasks})
+```
+
+为了验证刚才模拟的tasks数据可以访问，在前端页面还没开发时，可以直接访问`/todo/api/tasks`查看数据：运行服务器，访问`http://127.0.0.1:5000/todo/api/tasks`可以直接查看json数据。
+
+<h5>3.POST API数据修改数据</h5>
+
+用户在进行页面访问时，有可能需要对当前数据库内容进行新增或者删除，此时需要开发一个POST请求的API，可接受前端AJAX参数进行进一步的数据库读取操作。首先是新增tasks任务，API接口名字为`/todo/api/addTask`，方法为`POST`：
+
+```python
+#POST方法API，添加数据项
+@app.route('/todo/api/addTask', methods=['POST'])
+def add_task():
+	pass
+```
+
+结合tasks的数据结构，为了新增task任务，需要有以下参数进行标识：
+
+```python
+task = {
+		'id' : tasks[-1]['id'] + 1,
+		'title': request.json['title'],
+		'description' : request.json.get('description', ""),
+		'done' : False
+	}
+```
+
+其中`request`就是页面AJAX的请求信息。
+
+整合了AJAX的请求信息就可以直接插入现有的数据库中了，完整的POST新增task的代码如下：
+
+```python
+#POST方法API，添加数据项
+@app.route('/todo/api/addTask', methods=['POST'])
+def add_task():
+	if request.json['title'] == "":
+		abort(400)
+	task = {
+		'id' : tasks[-1]['id'] + 1,
+		'title': request.json['title'],
+		'description' : request.json.get('description', ""),
+		'done' : False
+	}
+	tasks.append(task)
+    #tasks变动后返回新数据到页面，状态码201
+	return jsonify({'tasks': tasks}), 201
+```
+
+同理，如果需要删除tasks中的某一项，需要以task的id作为标识符，请求方式同样为`POST`:
+
+```python
+#POST方法API，删除数据项
+@app.route('/todo/api/deleteTask', methods=['POST'])
+def delete_task():
+	task_id = request.json['id']
+	for task in tasks:
+		if task['id'] == task_id:
+			tasks.remove(task)
+			return jsonify({'tasks': tasks}), 201
+```
+
+<h5>4.404错误</h5>
+
+如果前端访问一个不存在的接口，需要抛出404错误提示：
+
+```python
+#404
+@app.errorhandler(404)
+def not_found(error):
+	return make_response(jsonify({'error': 'Not found'}), 404)
+```
+
+<h4>API在前端的调用与渲染</h4>
+
+前端调用无非就是使用AJAX进行数据请求，AJAX可以使用`XMLHttpRequest`、`$ajax()`等多种方式进行请求。本文使用的是MVVM框架vue.js进行接口调用并渲染页面，接口调用使用`vue-resource`的`$http()`方法。
+
+首先在页面加载时访问接口，并将接口返回的数据渲染到页面上：
+
+```javascript
+data: {
+    tasks: []
+},
+compiled: function() {
+	var self = this;
+	//在编译后即调用API接口取得服务器端数据
+	self.$http.get('/todo/api/tasks').then(function(res) {
+		self.tasks = res.data.tasks;
+	});
+}
+```
+
+视图模型如下：
+
+```html
+<div v-for="task in tasks">
+    <div>
+        {{ task.id }}
+        {{ task.title }}
+        <button @click="deleteTask(task.id)">x</button>
+    </div>
+
+    <div>
+        {{ task.description }}
+    </div>
+</div>
+
+<div class="box">
+	<input type="text" v-model="new_task.title"><br>
+	<textarea cols="30" rows="10" v-model="new_task.description">		</textarea>
+	<button @click="addTask">add</button>
+</div>
+```
+
+在视图模型中我还加入了可以添加、删除数据的操作`addTask`、`deleteTask`,对应的接口调用方法如下：
+
+```javascript
+methods: {
+      addTask: function() {
+      	var self = this;
+      	self.$http.post('/todo/api/addTask', {
+      		title: self.new_task.title,
+      		description: self.new_task.description
+      	}).then(function(res) {
+      	self.tasks = res.data.tasks;
+      	});
+      },
+      deleteTask: function(id) {
+            var self = this;
+            self.$http.post('/todo/api/deleteTask', {
+              id: id
+            }).then(function(res) {
+              self.tasks = res.data.tasks;
+            });
+      }
+}
+```
+
+此时再打开`http://127.0.0.1:5000/`就可以看到数据渲染、添加、删除等一系列前端效果，至此一个简单的前后端分离的实践已经结束。
+
+<h4>总结</h4>
+
+本文通过Python的Flask框架搭建了一个可以响应GET、POST请求的RESTful服务器，为前端页面提供了相应的操作API接口，同时使用vue.js进行数据请求和渲染，展现了前端页面如何调用API接口，可以看到使用RESTful API进行前后端分离有以下优点：
+
+1. 不再使用后端模板语言，前端页面代码可读性大大提高，维护性也大大提高；
+2. 通过前后端分离，具有数据交互的页面当做SPA开发，前端工程师可以更加专注的开发高性能、用户体验良好的页面；后端工程师只需为前端提供API接口，可以将更多的精力专注与后端的工作，前后端的业务专注度也有很大的提高；
+3. 如果使用MVVM框架进行页面开发，通过API数据响应可以自动更新dom，不需要开发者直接操作dom，也提高了页面的可维护性。
+
+本文完整代码可直接到https://github.com/Geocld/RESRful-API-with-vuejs进行查看，由于本人对部分知识了解不深，在文章里也写的比较肤浅，还请各位批评指正。
+
+（完）

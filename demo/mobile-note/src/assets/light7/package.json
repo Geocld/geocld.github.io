@@ -1,0 +1,79 @@
+{
+  "name": "light7",
+  "description": "Build mobile apps with simple HTML, CSS, and JS components.",
+  "version": "0.4.3",
+  "keywords": [
+    "light7",
+    "UI",
+    "webapp",
+    "css",
+    "fonts",
+    "ios",
+    "android",
+    "mobile"
+  ],
+  "homepage": "http://light7.org/",
+  "style": "dist/css/light7.css",
+  "less": "less/light7.less",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lihongxun945/light7.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "~3.0.0",
+    "grunt-banner": "~0.3.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-connect": "~0.10.1",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-csslint": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.12.2",
+    "grunt-contrib-jshint": "~0.11.1",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-qunit": "^0.7.0",
+    "grunt-csscomb": "~3.0.0",
+    "grunt-jekyll": "~0.4.2",
+    "load-grunt-tasks": "~3.1.0",
+    "time-grunt": "~1.1.0"
+  },
+  "engines": {
+    "node": ">=0.10.1"
+  },
+  "gitHead": "840cc0b91694aeb239ef85a5a225377d13e4a8db",
+  "bugs": {
+    "url": "https://github.com/lihongxun945/light7/issues"
+  },
+  "_id": "light7@0.4.3",
+  "_shasum": "468ffe6a25df2f771f1ef0581bcb5cf160a863e3",
+  "_from": "light7@latest",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "name": "lihongxun945",
+    "email": "lihongxun945@gmail.com"
+  },
+  "dist": {
+    "shasum": "468ffe6a25df2f771f1ef0581bcb5cf160a863e3",
+    "tarball": "https://registry.npmjs.org/light7/-/light7-0.4.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "lihongxun945",
+      "email": "lihongxun945@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/light7-0.4.3.tgz_1459151572699_0.4014494407456368"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/light7/-/light7-0.4.3.tgz"
+}

@@ -112,6 +112,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzY290Y2guaW8iLCJleHAiOjEzMDA4MTk
 
 CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。使用JWT机制随机产生一个token，同时将token存在浏览器本地存储而非cookie中，在每次发送请求时加上这个token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。
 
+这里是我使用jwt进行认证的一个实例[Daocloud-node](https://github.com/Geocld/Daocloud-node)，有需要的可以根据这个例子参考具体的使用。
+
 <h4>缺点</h4>
 
 由于JSON Web Token的独立性，JSON Web Token可以置于请求地址中，也可以加入到HTTP头定义属性中，也就引出了JWT自身的两个缺点：

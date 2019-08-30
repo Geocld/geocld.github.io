@@ -974,6 +974,7 @@ body {
 .bounes .title {
   font-size: 14px;
   font-weight: bold;
+  padding-bottom: 20px;
 }
 .qr-wrap {
   display: flex;
@@ -984,9 +985,11 @@ body {
 }
 .qr-wrap .item-title {
   font-size: 12px;
+  padding-bottom: 5px;
   font-weight: bold;
 }
 .qr-wrap img {
-  width: 40px;
   vertical-align: top;
+  margin-top: 0;
+  width: 200px;
 }

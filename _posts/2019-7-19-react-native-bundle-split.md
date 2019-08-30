@@ -10,7 +10,6 @@ tags: ['React-Native']
 
 
 <h2>背景介绍</h2>
-
 公司部分业务APP以react-native作为技术栈，且当前有一个完整的APP，不同的团队负责不同的业务开发，工作成果以子工程的形式加入到现有APP中，随着业务开发的迭代加快以及更多新的业务线的加入，子工程体积增加，进而主工程的体积也跟着增加，同时热更新以全量包的形式进行，也大大增加了用户更新时的流量消耗，因此业务拆包势在必行，拆包的目标如下：
 
 1. 减小业务打包生成的jsbundle体积，进而减小接入的APP的体积以及子工程热更新时下载体积，提升用户体验；
@@ -34,7 +33,6 @@ react-native初学者，不了解APP原生开发及objective-c/Java语言的开�
 
 
 <h2>react-native jsbundle解析</h2>
-
 在进行如何进行业务拆包之前，我们先对react-native的jsbundle做一个简单的认识。
 
 通过react-native bundle命令可对当前RN项目进行打包，以iOS为例，具体命令例子如下：
@@ -90,11 +88,9 @@ require(11);
 
 
 <h2>业务拆包</h2>
-
 业务拆包有两个方法：1.使用google的[diff-match-patch](https://github.com/google/diff-match-patch)工具计算业务patch，在集成到主工程并需要加载业务页面时，再合成一个完整的jsbundle进行加载；2.扩展react-native官方打包工具metro，将打包后的业务代码提取出来，下面一一介绍。
 
 <h3>diff-match-patch拆包</h3>
-
 Google给`diff-match-patch`提供了多语言版本，包括Java、Objective-c、Python及JavaScript等，因此很很容易用在跨平台的react-native应用中。首先我们在没有业务代码的RN框架进行打包，得到`common.ios.jsbundle`，接下来再添加业务代码，如在一个业务页面添加代码`<Text>Hello World</Text>`，打包，得到业务包`business.ios.bundle`，接下来我们写一段脚本，将我们添加的这段代码通过diff-match-patch提取出来，以补丁(patch)的形式作为业务拆包:
 
 ``` javascript
@@ -142,7 +138,6 @@ fs.readFile(`${process.cwd()}/common.ios.jsbundle`, 'utf8', (e, data) => {
 
 
 <h3>使用metro拆包</h3>
-
 metro是react-native的官方打包工具及dev server工具，在执行`react-native bundle`或在RN项目下执行`npm start`时，实际是调用metro-builder来进行加载打包任务的，针对拆包工作，0.56之后版本的RN依赖的metro已经趋于完善，开放了`--config <path / to / config>`参数来配置提供自定义文件，通过这个配置选项，我们就可以通过两个关键方法配置来修改打包配置，这两个方法分别是:`createModuleIdFactory`，`processModuleFilter`。
 
 
@@ -151,7 +146,6 @@ metro是react-native的官方打包工具及dev server工具，在执行`react-n
 * `processModuleFilter` 负责过滤掉基础包的内容模块，0.56以下版本没有此方法，因此需要我们自己来实现这个过滤方法。
 
 <h4>1. 固定模块ID</h4>
-
 首先是固定module ID，我们来看metro `createModuleIdFactory`的实现，在`metro/src/lib/createModuleIdFactory.js`看到该方法， 很简单:
 
 ```javascript
@@ -217,7 +211,6 @@ module.exports = createModuleIdFactory;
 这里我加了一个`process.env.__PROD__`的判断，即在开发模式下依旧使用原模式（**因为我发现全局改的话开发模式会运行失败**）。在打包的时候注入一个`__PROD__`环境变量才会进入自定义固定ID那段方法，在这段代码中，依据模块路径 path，在其基础上进行自定义路径名称，并作为 Id 返回，使用模块的路径作为ID，保证返回的ID是绝对固定的。
 
 <h4>2. 基础包和业务包打包</h4>
-
 在完成了打包源码修改后，接下来就是要分别打出基础模块与业务模块的jsbundle文件。在打包之前，需要我们分别定义好基础模块与业务模块文件，核心代码如下：
 
 ```javascript
@@ -279,7 +272,6 @@ react-native bundle --platform ios --dev false --entry-file index.js --bundle-ou
 
 
 <h4>3.求出差异包 </h4>
-
 我们已经通过 react-native bundle 将基础包（common.jsbundle）和业务包（business.jsbundle）生成，接下来就是要生成一个业务包独有的内容，及差异包（diff.jsbundle）。关于这个差异包，网上流传的方法最多的方法就是通过linux的`comm`命令，命令如下:
 
 ```Bash
@@ -350,7 +342,6 @@ node ./__test__/diff.js ./__test__/ios/common.ios.jsbundle ./__test__/ios/busine
 
 
 <h3>小结</h3>
-
 本章重点讲解了react-native jsbundle在`diff-match-patch`和`metro`的拆包实践，可以看出，针对0.56以下版本的RN，最优解依旧是修改metro源码，进行拆包，而且源码修改量也不大，清晰易懂，效果明显。对于`diff-match-patch`的拆包则不适于拆解完整的业务包，但在代码量改动极小的热更新方面，使用`diff-match-patch`来进行补丁更新，效果会很明显。
 
 

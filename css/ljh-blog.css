@@ -966,3 +966,27 @@ body {
 .page-fullscreen footer .copyright a:hover {
   color: #ddd;
 }
+
+
+.bounes {
+  text-align: center;
+}
+.bounes .title {
+  font-size: 14px;
+  font-weight: bold;
+}
+.qr-wrap {
+  display: flex;
+  align-items: center;
+}
+.qr-wrap .qr-item {
+  flex: 1;
+}
+.qr-wrap .item-title {
+  font-size: 12px;
+  font-weight: bold;
+}
+.qr-wrap img {
+  width: 40px;
+  vertical-align: top;
+}

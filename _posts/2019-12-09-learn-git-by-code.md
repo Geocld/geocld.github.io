@@ -508,7 +508,7 @@ function switchBranch (branchname) {
 
 <h4>分支合并</h4>
 
-每个分支都会指向一个该分支最新的commit，每个commit都会有一个指针parent指向的上一个commit，进而每个分支都会有一个独立的由commit实体组成的`链表`结构，如需进行分支合并操作，那么只需将两个分支对应的两条`链表`下的内容合并即可。Git是怎么区分当前分支与另一个分支的修改，然后在文件没有冲突的时候进行合并，有冲突然后进行差异提示的呢？这里Git用到了[Three-waymerge](https://en.wikipedia.org/wiki/Merge_(version_control)#Three-way_merge)算法，分支合并这个过程需要做以下事情：
+每个分支都会指向一个该分支最新的commit，每个commit都会有一个指针parent指向的上一个commit，进而每个分支都会有一个独立的由commit实体组成的`链表`结构，如需进行分支合并操作，那么只需将两个分支对应的两条`链表`下的内容合并即可。Git是怎么区分当前分支与另一个分支的修改，然后在文件没有冲突的时候进行合并，有冲突然后进行差异提示的呢？这里Git用到了[Three-way-merge](https://en.wikipedia.org/wiki/Merge_(version_control)#Three-way_merge)算法，关于`Three-way-merge`算法的介绍可以看[这篇文章](https://marsishandsome.github.io/2019/07/Three_Way_Merge)，写的很通俗易懂。`git merge`这个过程需要做以下事情：
 
 1. 两个分支链表先找到最近的共同节点:
 

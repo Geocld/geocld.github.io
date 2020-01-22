@@ -77,7 +77,7 @@ public class PhoneReceiver extends BroadcastReceiver {
   
 ```
 
-此时将代码运行起来，打个电话试试，此时可以看到已经可以在来电时弹窗并在挂掉电话时移除弹窗了，不过如果让APP在前台的状态下多试几次，就会发现弹窗不会移除了！此时在查看`WindowManager`的view发现变成了`null`，所以在执行`wm.removeView(phoneView)`时，就会出现`View not attached to window manager`的错误，通过搜索后可以得到类似的答案：
+此时将代码运行起来，打个电话试试，这是可以看到已经可能在来电时弹窗了并在挂掉电话时移除弹窗了，不过如果让APP在前台的状态下多试几次，就会发现弹窗不会移除了！此时在查看`WindowManager`的view发现变成了`null`，所以在执行`wm.removeView(phoneView);`时，就会出现`View not attached to window manager`的错误，通过搜索后可以得到类似的答案：
 
 > 如果在Dialog显示期间，该Activity因为某种原因被杀掉且又重新启动了，那么当任务结束时，Dismiss Dialog的时候WindowManager检查，就会发现该Dialog所属的Activity已经不存在了(重新启动了一次，是一个新的 Activity)，所以会报IllegalArgumentException： View not attached to window manager.
 
@@ -161,7 +161,7 @@ public class PhoneService extends Service {
 }
 ```
 
-把之前`PhoneStateListener`的初始化代码放到了Service的`onCreate`中 ，然后在`onDestroy`中要记得把电话监听停了，接着在`PhoneReceiver.java`中开启服务:
+把之前`PhoneStateListener`的初始化代码放到了Service的`onCreate`中 ，然后在`onDestroy`中要记得把电话监听停了。接着在`PhoneReceiver.java`中开启服务:
 
 ```java
 public class PhoneReceiver extends BroadcastReceiver {
@@ -198,3 +198,33 @@ public class PhoneReceiver extends BroadcastReceiver {
 ```
 
 此时再次运行代码进行测试，发现不管多少次调用来电显示，都可以正常显示和移除系统弹窗了。
+
+<h3>3. onCallStateChanged中发起HTTP请求</h3>
+
+`onCallStateChanged`方法里已经可以根据不同的`state`区分电话状态，并且可以获得具体的电话号码`incomingNumber`，接下来就可以发起HTTP请求获取电话的详细信息了。但是由于Android ANR机制，我们无法在`onCallStateChanged`中直接发起HTTP请求等耗时操作，如果强制在上面写相关代码，运行时会发现这段代码会直接忽略，因此我们需要“间接”地使用`asyncTask`来完成网络请求任务。
+
+`asyncTask`是Android中实现异步任务的最简单方法之一，同时他也提供了操作UI的相关方法，因此很合适我们本次发起HTTP请求后更新UI的需求，`asyncTask`执行异步任务有下面几个步骤：
+* `execute(Params... params)`:执行一个异步任务，需要我们在代码中调用此方法，触发异步任务的执行;
+* `onPreExecute()`: 在execute(Params... params)被调用后立即执行，一般用来在执行后台任务前对UI做一些标记;
+* `doInBackground(Params... params)`: 在onPreExecute()完成后立即执行，用于执行较为费时的操作，此方法将接收输入参数和返回计算结果。在执行过程中可以调用publishProgress(Progress... values)来更新进度信息;
+* `onProgressUpdate(Progress... values)`: 在调用publishProgress(Progress... values)时，此方法被执行，直接将进度信息更新到UI组件上;
+* `onPostExecute(Result result)`: 当后台操作结束时，此方法将会被调用，计算结果将做为参数传递到此方法中，直接将结果显示到UI组件上。
+
+`asyncTask`的数据流如下图：
+![asyncTask](/img/asyncTask.png)
+
+`asyncTask`的使用需要注意以下几点：
+* 不要手动调用onPreExecute()，doInBackground(Params... params)，onProgressUpdate(Progress... values)，onPostExecute(Result result)这几个方法
+* 不能在doInBackground(Params... params)中更改UI组件的信息
+
+在本次需求中在`doInBackground`中进行HTTP请求，然后将结果返回到`onPostExecute`中接着进行系统弹窗的显示及即可。
+
+<h3>4. Android保活相关</h3>
+到这里，电话监听的主要功能已经完成了，但还有个问题，由于Android的系统省电机制，如果APP不在省电白名单内，那么当APP退出后，前面的`PhoneService`在5-10分钟后就会强制kill掉，那么此时服务将停止，除非再次启动APP重启这个服务，这个问题也是常见的Android保活问题，为了能让APP在后台长时间运行，目前有几个典型的保活做法：在屏幕锁屏时启动一个1px像素的Activity、启动一个隐藏的通知栏、在后台播放无声音频，这些做法目的都是要APP长时间保持运行状态，具体的做法可以参考[这个项目](https://github.com/herojing/KeepProcessLive)。
+
+但这些五花八门的保活做法并不能保证APP 100%保活，尤其在Android 8之后，只要APP不是在省电白名单内，一段时间后系统还是会把APP的进程给kill掉，我在实际项目中加入保活代码后，应用持续状态从之前的5-10分钟延长到1个多小时，如果要实现完美的APP后台运行，有以下建议：
+
+* 引导用户手动到系统设置将APP加入省电白名单，这也是最简单高效的做法；
+* 联系Android系统厂商，将APP加入到厂商白名单，目前来看微信是在部分OS内做到了这一点，但是这个需要大量的资金支持，此方法不推荐。
+
+(完)

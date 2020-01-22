@@ -211,7 +211,7 @@ public class PhoneReceiver extends BroadcastReceiver {
 * `onPostExecute(Result result)`: 当后台操作结束时，此方法将会被调用，计算结果将做为参数传递到此方法中，直接将结果显示到UI组件上。
 
 `asyncTask`的数据流如下图：
-![asyncTask](/img/asyncTask.png)
+![asyncTask](/img/asyncTask.jpg)
 
 `asyncTask`的使用需要注意以下几点：
 * 不要手动调用onPreExecute()，doInBackground(Params... params)，onProgressUpdate(Progress... values)，onPostExecute(Result result)这几个方法

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>原生JavaScript插件编写指南 | lijiahao&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="前端，移动端和杂七杂八的技术分享">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.37c655b2.css" as="style"><link rel="preload" href="/assets/js/app.a9bdc083.js" as="script"><link rel="preload" href="/assets/js/2.e5ef3fc2.js" as="script"><link rel="preload" href="/assets/js/15.dbb9d75f.js" as="script"><link rel="prefetch" href="/assets/js/10.8d5d773f.js"><link rel="prefetch" href="/assets/js/11.23d9ff22.js"><link rel="prefetch" href="/assets/js/12.e59f6391.js"><link rel="prefetch" href="/assets/js/13.3e7141e6.js"><link rel="prefetch" href="/assets/js/14.fe486314.js"><link rel="prefetch" href="/assets/js/16.5d434c0a.js"><link rel="prefetch" href="/assets/js/17.da2946ee.js"><link rel="prefetch" href="/assets/js/18.36e8b01d.js"><link rel="prefetch" href="/assets/js/19.9b3b9de6.js"><link rel="prefetch" href="/assets/js/20.193b4724.js"><link rel="prefetch" href="/assets/js/21.616e69cf.js"><link rel="prefetch" href="/assets/js/22.3437dd07.js"><link rel="prefetch" href="/assets/js/23.9800f0eb.js"><link rel="prefetch" href="/assets/js/24.e5a8a296.js"><link rel="prefetch" href="/assets/js/25.6d348e84.js"><link rel="prefetch" href="/assets/js/26.c37cea17.js"><link rel="prefetch" href="/assets/js/27.53a95692.js"><link rel="prefetch" href="/assets/js/28.15b0cfe6.js"><link rel="prefetch" href="/assets/js/29.862a718b.js"><link rel="prefetch" href="/assets/js/3.a285842d.js"><link rel="prefetch" href="/assets/js/30.b9a503f5.js"><link rel="prefetch" href="/assets/js/31.a206f84e.js"><link rel="prefetch" href="/assets/js/32.1a84dedf.js"><link rel="prefetch" href="/assets/js/33.f76a3db5.js"><link rel="prefetch" href="/assets/js/34.c37860e7.js"><link rel="prefetch" href="/assets/js/35.03d6ab39.js"><link rel="prefetch" href="/assets/js/36.04a82eac.js"><link rel="prefetch" href="/assets/js/37.6318c57b.js"><link rel="prefetch" href="/assets/js/38.2b9b710b.js"><link rel="prefetch" href="/assets/js/39.569b7614.js"><link rel="prefetch" href="/assets/js/4.b2670b76.js"><link rel="prefetch" href="/assets/js/40.4bc8a30b.js"><link rel="prefetch" href="/assets/js/41.9e28cdcc.js"><link rel="prefetch" href="/assets/js/42.6a82f95a.js"><link rel="prefetch" href="/assets/js/43.3f8a62bd.js"><link rel="prefetch" href="/assets/js/44.7fa8ad87.js"><link rel="prefetch" href="/assets/js/45.7353d595.js"><link rel="prefetch" href="/assets/js/46.5b899020.js"><link rel="prefetch" href="/assets/js/47.6d30e01d.js"><link rel="prefetch" href="/assets/js/48.80d902b8.js"><link rel="prefetch" href="/assets/js/49.798c144d.js"><link rel="prefetch" href="/assets/js/5.743f4f71.js"><link rel="prefetch" href="/assets/js/50.75da1fc9.js"><link rel="prefetch" href="/assets/js/6.cc8be4ba.js"><link rel="prefetch" href="/assets/js/7.4906c9c9.js"><link rel="prefetch" href="/assets/js/8.44bf5540.js"><link rel="prefetch" href="/assets/js/9.68f02dbc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.37c655b2.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open no-sidebar"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">lijiahao's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/Geocld" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/Geocld" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-14888ed5><div class="articleInfo" data-v-14888ed5><ul class="breadcrumbs" data-v-14888ed5><li data-v-14888ed5><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-14888ed5></a></li> <li data-v-14888ed5><a href="/categories/?category=%E6%8A%80%E6%9C%AF" title="分类" data-v-14888ed5>技术</a></li> <!----></ul> <div class="info" data-v-14888ed5><div title="作者" class="author iconfont icon-touxiang" data-v-14888ed5><a href="https://github.com/geocld" target="_blank" title="作者" class="beLink" data-v-14888ed5>lijiahao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-14888ed5><a href="javascript:;" data-v-14888ed5>2016-03-10</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">
+          原生JavaScript插件编写指南
+        </h1> <div class="theme-vdoing-content content__default"><p>在jQuery大量使用的环境下，目前网上的众多jQuery插件也能基本满足要求，但是在项目具体需求下，有时候依旧需要自己造轮子，本文介绍了如何不依赖jQuery等库进行原生JavsScript插件的编写。</p> <p>##插件需要满足的条件
+一个可复用的插件需要满足以下条件：</p> <ol><li>插件自身的作用域与用户当前的作用域相互独立，也就是插件内部的私有变量不能影响使用者的环境变量；</li> <li>插件需具备默认设置参数；</li> <li>插件除了具备已实现的基本功能外，需提供部分API，使用者可以通过该API修改插件功能的默认参数，从而实现用户自定义插件效果；</li> <li>插件需提供监听入口，及针对指定元素进行监听，使得该元素与插件响应达到插件效果；</li> <li>插件支持链式调用。</li></ol> <p>以下便针对这四点要求进行逐个讲解，以实现自定义的原生插件。</p> <p>##1、插件全局函数
+实现私有作用域，最好的办法就是使用闭包。可以把插件当做一个函数，插件内部的变量及函数的私有变量，为了在调用插件后依旧能使用其功能，闭包的作用就是延长函数(插件)内部变量的生命周期，使得插件函数可以重复调用，而不影响用户自身作用域。</p> <p>故需将插件的所有功能写在一个立即执行函数中：</p> <div class="language- extra-class"><pre><code>(function () {
+	//插件所有功能都写在这个函数下
+})();
+</code></pre></div><p>##2、插件默认参数
+插件的主要功能可以总结至几个关键参数，通过这几个关键参数即可修改插件的主要功能，也是第三步API设置的关键参数。</p> <p>将默认参数放置在全局函数的最前面，参数变量名为options,通过对象字面量进行赋值：</p> <div class="language- extra-class"><pre><code>var options = {
+	key1: para1,
+	key2: para2,
+	key3: para3,
+	...
+	keyn: paran
+}
+</code></pre></div><p>key即为可以插件变量名字，para为该变量对应的值。如我需要编写一个设置颜色的插件，默认颜色为黑色，option应为：</p> <div class="language- extra-class"><pre><code>var options = {
+	color: '#333333'
+}
+</code></pre></div><p>编写功能部分时调用方式：<code>options.color</code>。</p> <p>##3、插件API、参数设置和监听
+因为API指向的是使用者，故需要在用户调用插件时将API暴露给用户，因用户API时是通过插件提供的名字进行使用，故将API设置为Object类型，用户就可以通过调用API的key进行使用，具体的代码如下：</p> <div class="language- extra-class"><pre><code>var api = {
+	config: function (ops) {
+		//....
+		return this;
+	},
+	listen: function listen(elem) {
+		//...
+		return this;
+	},
+	feature1: function() {
+		//...
+	},
+	feature2: function() {
+		//...
+	}
+}
+this.pluginName = api;
+</code></pre></div><p>上面提供了api的写法示范，该api提供了config以设置自定义参数，listen为插件监听的dom操作，feature为插件的主要功能，使用options参数的功能都要写在api下，注意<code>api.config</code>和<code>api.listen</code>两个函数都应该在最后返回<code>this</code>，以便实现插件的链式调用。</p> <p>有了上面的框架，针对<code>config</code>设置函数的写法就有了明确的要求：在用户没有传入自定义函数时，默认使用上一节options中的参数，如果用户有设置config参数，使用用户自定义参数：</p> <div class="language- extra-class"><pre><code>config: function (opts) {
+	//没有参数传入，直接返回默认参数
+	if(!opts) return options;
+	//有参数传入，通过key将options的值更新为用户的值
+	for(var key in opts) {
+		options[key] = opts[key];
+	}
+	return this;
+}
+</code></pre></div><p>针对元素的监听listen，需要对所有符合条件的dom元素进行监听：</p> <div class="language- extra-class"><pre><code>listen: function listen(elem) {
+	//这里通过typeof设置监听的元素需为字符串调用，实际可根据需要进行更改
+	if (typeof elem === 'string') {
+		//这里使用ES5的querySelectorAll方法获取dom元素
+		var elems = document.querySelectorAll(elem),
+			i = elems.length;
+			//通过递归将listen方法应用在所有的dom元素上
+			while (i--) {
+				listen(elems[i]);
+			}
+			return
+	}
+	//在这里，你可以将插件的部分功能函数写在这里
+
+	return this;
+}
+</code></pre></div><p>在config和listen这两个最基本的API完成后，需要将API与插件的名字结合起来：</p> <div class="language- extra-class"><pre><code>this.pluginName = api;
+</code></pre></div><p>则最基本的API如下：</p> <div class="language- extra-class"><pre><code>var api = {
+	//插件参数设定
+	config: function (opts) {
+		if(!opts) return options;
+		for(var key in opts) {
+			options[key] = opts[key];
+		}
+		return this;
+	},
+	//插件监听
+	listen: function listen(elem) {
+		if (typeof elem === 'string') {
+			var elems = document.querySelectorAll(elem),
+				i = elems.length;
+				while (i--) {
+					listen(elems[i]);
+				}
+				return
+		}
+		//插件功能函数可以写在这
+		return this;
+	}
+}
+//将API赋值给插件名字
+this.pluginName = api;
+</code></pre></div><p>则用户使用该插件时，调用方式为：</p> <div class="language- extra-class"><pre><code>pluginName.listen('#demo');
+</code></pre></div><p>如需要自定义参数：</p> <div class="language- extra-class"><pre><code>pluginName.config({key: 'para'}).listen('#demo');
+//因为config和listen已经返回this，所有可以这样调用：
+pluginName.listen('#demo').config({key: 'para'});
+//还可以这样调用：
+pluginName.config({key: 'para'})
+		  .listen('#demo');
+</code></pre></div><p>##4、结语
+以上介绍了原生插件的基本框架的写法，在我的github上还提供了几个由jQuery插件转化过来的原生插件实例：</p> <p><a href="https://github.com/Geocld/ColorDivideJS" target="_blank" rel="noopener noreferrer">ColorDivideJS<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><a href="https://github.com/Geocld/domzoom.js" target="_blank" rel="noopener noreferrer">domzoom.js<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>在这个基础框架基础上，可以扩展出符合项目具体要求的特定插件。同时这样的插件没有其他库依赖，也具有更强的复用性。</p> <p>（完）</p></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=JavaScript" title="标签">
+      #JavaScript
+    </a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2020/08/08, 16:08:00</span></div></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/658815/"><div>react-native run-ios内部原理探索</div></a> <span>03-05</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/3ffe0e/"><div>Android电话监听功能开发及注意事项</div></a> <span>01-22</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/85ee6e/"><div>关于Rom Hacking你可以了解到的一些事</div></a> <span>01-16</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><div class="icons"><a href="mailto:lijiahao53@gmail.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/geocld" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+     | Copyright © 2015-2020
+    <span>lijiahao | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a9bdc083.js" defer></script><script src="/assets/js/2.e5ef3fc2.js" defer></script><script src="/assets/js/15.dbb9d75f.js" defer></script>
+  </body>
+</html>

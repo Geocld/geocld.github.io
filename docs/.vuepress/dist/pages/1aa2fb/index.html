@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Base64编码规则 | lijiahao&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="前端，移动端和杂七杂八的技术分享">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.37c655b2.css" as="style"><link rel="preload" href="/assets/js/app.a9bdc083.js" as="script"><link rel="preload" href="/assets/js/2.e5ef3fc2.js" as="script"><link rel="preload" href="/assets/js/20.193b4724.js" as="script"><link rel="prefetch" href="/assets/js/10.8d5d773f.js"><link rel="prefetch" href="/assets/js/11.23d9ff22.js"><link rel="prefetch" href="/assets/js/12.e59f6391.js"><link rel="prefetch" href="/assets/js/13.3e7141e6.js"><link rel="prefetch" href="/assets/js/14.fe486314.js"><link rel="prefetch" href="/assets/js/15.dbb9d75f.js"><link rel="prefetch" href="/assets/js/16.5d434c0a.js"><link rel="prefetch" href="/assets/js/17.da2946ee.js"><link rel="prefetch" href="/assets/js/18.36e8b01d.js"><link rel="prefetch" href="/assets/js/19.9b3b9de6.js"><link rel="prefetch" href="/assets/js/21.616e69cf.js"><link rel="prefetch" href="/assets/js/22.3437dd07.js"><link rel="prefetch" href="/assets/js/23.9800f0eb.js"><link rel="prefetch" href="/assets/js/24.e5a8a296.js"><link rel="prefetch" href="/assets/js/25.6d348e84.js"><link rel="prefetch" href="/assets/js/26.c37cea17.js"><link rel="prefetch" href="/assets/js/27.53a95692.js"><link rel="prefetch" href="/assets/js/28.15b0cfe6.js"><link rel="prefetch" href="/assets/js/29.862a718b.js"><link rel="prefetch" href="/assets/js/3.a285842d.js"><link rel="prefetch" href="/assets/js/30.b9a503f5.js"><link rel="prefetch" href="/assets/js/31.a206f84e.js"><link rel="prefetch" href="/assets/js/32.1a84dedf.js"><link rel="prefetch" href="/assets/js/33.f76a3db5.js"><link rel="prefetch" href="/assets/js/34.c37860e7.js"><link rel="prefetch" href="/assets/js/35.03d6ab39.js"><link rel="prefetch" href="/assets/js/36.04a82eac.js"><link rel="prefetch" href="/assets/js/37.6318c57b.js"><link rel="prefetch" href="/assets/js/38.2b9b710b.js"><link rel="prefetch" href="/assets/js/39.569b7614.js"><link rel="prefetch" href="/assets/js/4.b2670b76.js"><link rel="prefetch" href="/assets/js/40.4bc8a30b.js"><link rel="prefetch" href="/assets/js/41.9e28cdcc.js"><link rel="prefetch" href="/assets/js/42.6a82f95a.js"><link rel="prefetch" href="/assets/js/43.3f8a62bd.js"><link rel="prefetch" href="/assets/js/44.7fa8ad87.js"><link rel="prefetch" href="/assets/js/45.7353d595.js"><link rel="prefetch" href="/assets/js/46.5b899020.js"><link rel="prefetch" href="/assets/js/47.6d30e01d.js"><link rel="prefetch" href="/assets/js/48.80d902b8.js"><link rel="prefetch" href="/assets/js/49.798c144d.js"><link rel="prefetch" href="/assets/js/5.743f4f71.js"><link rel="prefetch" href="/assets/js/50.75da1fc9.js"><link rel="prefetch" href="/assets/js/6.cc8be4ba.js"><link rel="prefetch" href="/assets/js/7.4906c9c9.js"><link rel="prefetch" href="/assets/js/8.44bf5540.js"><link rel="prefetch" href="/assets/js/9.68f02dbc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.37c655b2.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open no-sidebar"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">lijiahao's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/Geocld" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/Geocld" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-14888ed5><div class="articleInfo" data-v-14888ed5><ul class="breadcrumbs" data-v-14888ed5><li data-v-14888ed5><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-14888ed5></a></li> <li data-v-14888ed5><a href="/categories/?category=%E6%8A%80%E6%9C%AF" title="分类" data-v-14888ed5>技术</a></li> <!----></ul> <div class="info" data-v-14888ed5><div title="作者" class="author iconfont icon-touxiang" data-v-14888ed5><a href="https://github.com/geocld" target="_blank" title="作者" class="beLink" data-v-14888ed5>lijiahao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-14888ed5><a href="javascript:;" data-v-14888ed5>2016-05-27</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">
+          Base64编码规则
+        </h1> <div class="theme-vdoing-content content__default"><p>网络信息传递时，一些二进制资源往往需要转换为Base64编码进行传输，以提高传输效率，例如webpack提供了将图片格式文件转换为Base64格式，下面将简单介绍Base64编码的原理和实现过程。</p> <p>##Base64编码原理
+Base64是一种基于64个可打印字符来表示二进制数据的表示方法。base64要求将每三个8bits字节转换为四个6bit的字节(3 * 8 = 4 * 6 = 24),然后将转换后的6bit往高位添加2个0,组成4个8bit的字节，再根据这4个8bit字节的十进制在索引表中查找对应的值，此时得到的结果就是Base64值。</p> <p>因此，理论上，<strong>转换后的字符串的长度要比原来的字符串长度长1/3</strong>，例如：转换前的4*6二进制字符串为：aaaaaa bbbbbb cccccc dddddd,在每个字节高位添加两个零后就是: 00aaaaaa 00bbbbbb 00cccccc 00dddddd,此时长度就比原字符串长度多了1/3。</p> <p>一下是一段话编码为Base64前后的变化：</p> <p>编码前：</p> <div class="language- extra-class"><pre><code>Man is distinguished, not only by his reason, but by this singular passion from
+other animals, which is a lust of the mind, that by a perseverance of delight
+in the continued and indefatigable generation of knowledge, exceeds the short
+vehemence of any carnal pleasure.
+</code></pre></div><p>编码后：</p> <div class="language- extra-class"><pre><code>TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+</code></pre></div><p>前面提到了Base64算法的索引表，Base64的索引表由64个ASCII字符组成：0-9，26个英文小写字母a-z，26个英文大写字母：A-Z，除此之外还有额外两个字符&quot;+&quot;和&quot;/&quot;。下面是Base64的索引表：</p> <p><img src="http://i.imgur.com/4wh9OVF.png" alt=""></p> <p>理论上上面的索引表还要加入padding:&quot;=&quot;，前面提到一个字符串转成Base64时是生成4个字符，如果待转换的字符串转换后不足4个Base64字符，则空白的地方需要使用“=”补充，看下面的例子就能明白：</p> <p>文本&quot;M&quot;转换为Base64的过程：</p> <p><img src="http://i.imgur.com/IOGb2ZE.png" alt=""></p> <p>在这里，&quot;M&quot;转换后的ASCII不足以填充够24位二进制字符串，再第二个字节之后，全部用&quot;0&quot;补充，得到的索引值即分别为&quot;T&quot;,&quot;Q&quot;,&quot;=&quot;,&quot;=&quot;,最终的Base64编码结果为&quot;TQ==&quot;.</p> <p>再来看两个个例子加深印象,字符串&quot;Ma&quot;:</p> <p><img src="http://i.imgur.com/FXWHGmh.png" alt=""></p> <p>转换后的Base64结果为：&quot;TWE=&quot;。</p> <p>字符串&quot;Man&quot;:</p> <p><img src="http://i.imgur.com/ZoLq9DI.png" alt=""></p> <p>转换后结果为&quot;TWFu&quot;。</p> <p>这里进行一个小结，普通字符串文本转换为Base64的基本过程为:</p> <p><strong>字符串对应的字符转换为ASCII→将该ASCII转换为8位二进制→将转换的8位二进制进行6bit拆分，高位填充0，形成新的二进制→根据新的二进制从Base64索引表查找结果</strong></p> <p>##Base64编码的实现</p> <p>了解了Base64的转换规则后，我们通过JavaScript来简单实现Base的<code>编码</code>以及<code>解码</code>:</p> <div class="language- extra-class"><pre><code>var Base64 = {
+
+_keyStr: &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&quot;,
+
+//将字符串转换为Base64
+encode: function(input) {
+    var output = &quot;&quot;;
+    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    var i = 0;
+
+    while (i &lt; input.length) {
+
+        chr1 = input.charCodeAt(i++);
+        chr2 = input.charCodeAt(i++);
+        chr3 = input.charCodeAt(i++);
+
+        enc1 = chr1 &gt;&gt; 2;
+        enc2 = ((chr1 &amp; 3) &lt;&lt; 4) | (chr2 &gt;&gt; 4);
+        enc3 = ((chr2 &amp; 15) &lt;&lt; 2) | (chr3 &gt;&gt; 6);
+        enc4 = chr3 &amp; 63;
+
+        if (isNaN(chr2)) {
+            enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+            enc4 = 64;
+        }
+        output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+    }
+    return output;
+},
+
+//将Base64解码为可读字符串
+decode: function(input) {
+    var output = &quot;&quot;;
+    var chr1, chr2, chr3;
+    var enc1, enc2, enc3, enc4;
+    var i = 0;
+
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, &quot;&quot;);
+
+    while (i &lt; input.length) {
+        enc1 = this._keyStr.indexOf(input.charAt(i++));
+        enc2 = this._keyStr.indexOf(input.charAt(i++));
+        enc3 = this._keyStr.indexOf(input.charAt(i++));
+        enc4 = this._keyStr.indexOf(input.charAt(i++));
+
+        chr1 = (enc1 &lt;&lt; 2) | (enc2 &gt;&gt; 4);
+        chr2 = ((enc2 &amp; 15) &lt;&lt; 4) | (enc3 &gt;&gt; 2);
+        chr3 = ((enc3 &amp; 3) &lt;&lt; 6) | enc4;
+
+        output = output + String.fromCharCode(chr1);
+
+        if (enc3 != 64) {
+            output = output + String.fromCharCode(chr2);
+        }
+        if (enc4 != 64) {
+            output = output + String.fromCharCode(chr3);
+        }
+    }
+    return output;
+	}
+}
+</code></pre></div><p>首先定义一个Base64的索引值<code>_keyStr</code>，其中包含了A-/的64个字符，最后还加上填充值'=',索引值供编码以及解码时使用。</p> <p>首先看编码方法(encode)，定义输入原始字符串的连续三个字符chr1,chr2，chr3，输出的4个二进制字符enc1，enc2，enc3，enc4，通过一个变量<code>i</code>遍历输入的原始字符串，以原始字符串“abcd”为例：</p> <p>第一次循环：
+首先将第一次循环的三个字符转变为ASCII的十进制模式</p> <div class="language- extra-class"><pre><code>chr1 = input.charCodeAt(i++);//chr1：a→97
+chr2 = input.charCodeAt(i++);//chr2：b→98
+chr3 = input.charCodeAt(i++);//chr3：c→99
+console.log(chr1)//97(0110 0001)
+console.log(chr2)//98(0110 0010)
+console.log(chr3)//99(0110 0011)
+</code></pre></div><p>有了ASCII的十进制值后，即可使用<code>位运算</code>，将 3 * 8 的二进制拆分为4 * 6的二进制模式，下面一步一步来看位运算是如何实现4 * 6拆分的：</p> <div class="language- extra-class"><pre><code>enc1 = chr1 &gt;&gt; 2;
+/*计算enc1：将chr1右移两位：0110 0001→0001 1000*/
+console.log(enc1)//00011000
+
+enc2 = ((chr1 &amp; 3) &lt;&lt; 4) | (chr2 &gt;&gt; 4);
+/*计算enc2：
+/*取chr1的最后两位作为enc2的最高位，取chr2的高四位作为enc2的低四位，将两者通过或运算结合：
+/*( chr1 &amp; 3 ) &lt;&lt; 4= (0110 0001 &amp; 0000 0011) &lt;&lt; 4 = (00000001)&lt;&lt;4 = 0001 0000,
+/*(chr2 &gt;&gt; 4) = (0110 0010) &gt;&gt; 4 = 00000110,
+/*enc2=0001 0000 | 0000 0110=0001 0110
+/*console.log(enc2)//00010110
+*/
+
+enc3 = ((chr2 &amp; 15) &lt;&lt; 2) | (chr3 &gt;&gt; 6);
+/*计算enc3：
+/*取chr2的低四位和chr3的高两位组成enc2的低六位(高两位补零): 
+/*(chr2 &amp; 15) &lt;&lt; 2 = (0110 0010 &amp; 0000 1111) &lt;&lt; 2 = 0000 0010 &lt;&lt; 2 = 0000 1000, 
+/*chr3 &gt;&gt; 6 = 0110 0011 &gt;&gt; 6 = 0000 0001,
+/*enc3 = 0000 1000 | 0000 0001 = 0000 1001
+/*console.log(enc3)//00001001
+*/
+
+enc4 = chr3 &amp; 63;
+/*计算enc4：取chr3余下六位作为低六位(高两位补零)：
+/*enc4 = 0110 0011 &amp; 0011 1111 = 0010 1011
+/*console.log(enc4)//00101011
+*/
+</code></pre></div><p>此时通过<code>this._keyStr.charAt(encx)</code>进行索引查找，得到的前三个字符的编码为<code>“YWJj”</code>。</p> <p>分析完<code>&quot;abcd&quot;</code>的<code>&quot;abc&quot;</code>编码，也就是程序的第一次循环，还剩&quot;d&quot;未解析，此时需要进入第二次循环，由于d之后已经没有字符，故第二次循环时的<code>chr1</code>、<code>chr2</code>、<code>chr3</code>的结果为：<code>100</code>,<code>NaN</code>,<code>NaN</code>。同理进行3 * 8 = 4 * 6编码时得到的最后编码为“ZA==”。</p> <p>经过两次循环后，原始字符串&quot;abcd&quot;已经被全部遍历并编码，最后得到的Base64编码为&quot;YWJjZA==&quot;。</p> <p>理解了<code>encode</code>方法后，再去进行解码'decode'就比较简单了，基本上就是编码的逆向操作，这里就不一一解释了。</p> <p>##总结
+Base64作为一种传输二进制的编码格式，虽然编码后字符内容长度会增加大约1/3，但是在一定程度上保证了一些不可打印字符在传输时的的信息完整性，同时本文最后也通过使用JavaScript实现了Base64的编码以及解码，可以看到Base64也起到了一定的加密作用(起码不是人一眼就能看懂的),在实际项目中应根据具体需求和环境选用Base64编码。</p> <p>(完)</p> <p>参考资料：</p> <p><a href="https://en.wikipedia.org/wiki/Base64" target="_blank" rel="noopener noreferrer">Base64<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><a href="http://fm4dd.com/programming/base64/base64_algorithm.htm" target="_blank" rel="noopener noreferrer">Base64 algorithm<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E7%AE%97%E6%B3%95" title="标签">
+      #算法
+    </a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2020/08/08, 16:08:00</span></div></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/658815/"><div>react-native run-ios内部原理探索</div></a> <span>03-05</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/3ffe0e/"><div>Android电话监听功能开发及注意事项</div></a> <span>01-22</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/85ee6e/"><div>关于Rom Hacking你可以了解到的一些事</div></a> <span>01-16</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><div class="icons"><a href="mailto:lijiahao53@gmail.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/geocld" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+     | Copyright © 2015-2020
+    <span>lijiahao | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a9bdc083.js" defer></script><script src="/assets/js/2.e5ef3fc2.js" defer></script><script src="/assets/js/20.193b4724.js" defer></script>
+  </body>
+</html>

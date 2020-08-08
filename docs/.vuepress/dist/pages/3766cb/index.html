@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue.js+webpack模块管理及组件开发（一） | lijiahao&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="前端，移动端和杂七杂八的技术分享">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    <link rel="preload" href="/assets/css/0.styles.37c655b2.css" as="style"><link rel="preload" href="/assets/js/app.a9bdc083.js" as="script"><link rel="preload" href="/assets/js/2.e5ef3fc2.js" as="script"><link rel="preload" href="/assets/js/16.5d434c0a.js" as="script"><link rel="prefetch" href="/assets/js/10.8d5d773f.js"><link rel="prefetch" href="/assets/js/11.23d9ff22.js"><link rel="prefetch" href="/assets/js/12.e59f6391.js"><link rel="prefetch" href="/assets/js/13.3e7141e6.js"><link rel="prefetch" href="/assets/js/14.fe486314.js"><link rel="prefetch" href="/assets/js/15.dbb9d75f.js"><link rel="prefetch" href="/assets/js/17.da2946ee.js"><link rel="prefetch" href="/assets/js/18.36e8b01d.js"><link rel="prefetch" href="/assets/js/19.9b3b9de6.js"><link rel="prefetch" href="/assets/js/20.193b4724.js"><link rel="prefetch" href="/assets/js/21.616e69cf.js"><link rel="prefetch" href="/assets/js/22.3437dd07.js"><link rel="prefetch" href="/assets/js/23.9800f0eb.js"><link rel="prefetch" href="/assets/js/24.e5a8a296.js"><link rel="prefetch" href="/assets/js/25.6d348e84.js"><link rel="prefetch" href="/assets/js/26.c37cea17.js"><link rel="prefetch" href="/assets/js/27.53a95692.js"><link rel="prefetch" href="/assets/js/28.15b0cfe6.js"><link rel="prefetch" href="/assets/js/29.862a718b.js"><link rel="prefetch" href="/assets/js/3.a285842d.js"><link rel="prefetch" href="/assets/js/30.b9a503f5.js"><link rel="prefetch" href="/assets/js/31.a206f84e.js"><link rel="prefetch" href="/assets/js/32.1a84dedf.js"><link rel="prefetch" href="/assets/js/33.f76a3db5.js"><link rel="prefetch" href="/assets/js/34.c37860e7.js"><link rel="prefetch" href="/assets/js/35.03d6ab39.js"><link rel="prefetch" href="/assets/js/36.04a82eac.js"><link rel="prefetch" href="/assets/js/37.6318c57b.js"><link rel="prefetch" href="/assets/js/38.2b9b710b.js"><link rel="prefetch" href="/assets/js/39.569b7614.js"><link rel="prefetch" href="/assets/js/4.b2670b76.js"><link rel="prefetch" href="/assets/js/40.4bc8a30b.js"><link rel="prefetch" href="/assets/js/41.9e28cdcc.js"><link rel="prefetch" href="/assets/js/42.6a82f95a.js"><link rel="prefetch" href="/assets/js/43.3f8a62bd.js"><link rel="prefetch" href="/assets/js/44.7fa8ad87.js"><link rel="prefetch" href="/assets/js/45.7353d595.js"><link rel="prefetch" href="/assets/js/46.5b899020.js"><link rel="prefetch" href="/assets/js/47.6d30e01d.js"><link rel="prefetch" href="/assets/js/48.80d902b8.js"><link rel="prefetch" href="/assets/js/49.798c144d.js"><link rel="prefetch" href="/assets/js/5.743f4f71.js"><link rel="prefetch" href="/assets/js/50.75da1fc9.js"><link rel="prefetch" href="/assets/js/6.cc8be4ba.js"><link rel="prefetch" href="/assets/js/7.4906c9c9.js"><link rel="prefetch" href="/assets/js/8.44bf5540.js"><link rel="prefetch" href="/assets/js/9.68f02dbc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.37c655b2.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open no-sidebar"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">lijiahao's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/Geocld" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/Geocld" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-14888ed5><div class="articleInfo" data-v-14888ed5><ul class="breadcrumbs" data-v-14888ed5><li data-v-14888ed5><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-14888ed5></a></li> <li data-v-14888ed5><a href="/categories/?category=%E6%8A%80%E6%9C%AF" title="分类" data-v-14888ed5>技术</a></li> <!----></ul> <div class="info" data-v-14888ed5><div title="作者" class="author iconfont icon-touxiang" data-v-14888ed5><a href="https://github.com/geocld" target="_blank" title="作者" class="beLink" data-v-14888ed5>lijiahao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-14888ed5><a href="javascript:;" data-v-14888ed5>2016-03-14</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><!----> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">
+          vue.js+webpack模块管理及组件开发（一）
+        </h1> <div class="theme-vdoing-content content__default"><p>这两年，Angular、React、Vue等MV**开发框架可谓红遍了整个前端领域，在web app领域得到了更加广泛的应用，同时，配合webpack、Browserify等模块打包管理工具，开发效率也得以大大提升，前段时间也利用闲暇时间从零摸索了Vue.js和webpack的配合使用，学习web app组件开发模式，在这里写成文章整理一下思路。</p> <p>本文涉及到的技术栈主要包括：</p> <ul><li><p>vue.js</p></li> <li><p>webpack</p></li> <li><p>npm</p></li></ul> <p>下面先对这三个进行简单的介绍。</p> <p>##vue.js</p> <blockquote><p>Vue.js是一个构建数据驱动的 web 界面的库。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。</p></blockquote> <p>以上是Vue.js官方定义，故名思议，以数据驱动视图是Vue.js推崇的开发模式，与jQuery手工操作DOM元素以更新视图不同，Vue.js提倡尽量减少DOM操作。因此，Vue.js是一个专注于视图的开发框架，也就是MVVM中的VM，下面一个简单的例子解释了一个完整的MVVM模型：</p> <div class="language- extra-class"><pre><code>&lt;!--这里是view--&gt;
+&lt;div id=&quot;app&quot;&gt;
+	awesome 
+&lt;/div&gt;
+
+//这是model部分
+var myData = {
+	name: 'Vue.js'
+}
+
+//创建一个Vue实例，连接上面的view和model，也就是“ViewModel”
+new Vue({
+	el: '#app',
+	data: myData
+})
+</code></pre></div><p>渲染结果为：</p> <div class="language- extra-class"><pre><code>awesome Vue.js
+</code></pre></div><p>基于这样一种MVVM开发模式，在配合vue的组件开发、数据绑定，在后续的app开发中会有极大的威力。</p> <p>##webpack
+webpack是当前十分热门的模块加载器，它能把各种资源，如JS、css/less/sass、图片等都做为模块来使用和处理。在大型应用的开发过程中，将应用分割成一个个小模块，分工合作，然后再将小模块通过webpack进行整合，达到了“庖丁解牛”的效果，用一张图来说明webpack在作用，就是：
+<img src="http://i.imgur.com/w4N78Sq.jpg" alt="">
+##npm
+这几年不管是在github还是在各种社区上，都能看到npm的身影，npm是一个模块管理工具，它运行在命令行下，用来安装和管理node模块。</p> <p>前面说到将开发的静态资源分成一个个模块，在我们使用该模块时，采用<code>npm install</code>即可安装相应的模块，这个在后面的具体例子会有具体的操作和应用。</p> <p>##vue + webpack
+现在通过vue作者提供的<a href="https://github.com/vuejs/vue-loader-example" target="_blank" rel="noopener noreferrer">vue-loader-example<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+来一步步了解vue在webpack下的组件模块开发，同时利用npm来安装我们需要的模块包。</p> <p>项目目录结构如下：</p> <div class="language- extra-class"><pre><code>│  .gitignore          # 忽略无需git控制的文件  比如 node_modules
+│  package.json        # 项目配置
+|  .eslintrc           # eslint加载器配置
+|  .babelrc			   # babel加载器配置
+│  index.html          # 首页
+│
+├─node_modules         #通过npm安装的模块
+│
+├─build
+│     │  webpack.base.config.js         # webpack 基础配置
+│     │  webpack.dev.config.js          # webpack 开发配置
+│     └─ webpack.prod.config.js         # webpack 生产配置
+│
+└─src
+	|
+	|——assets	 #静态资源 
+	|
+	|——components    # 组件文件夹,存放app组件
+	|		A.vue
+	|		B.vue
+	|		Counter.vue
+	|
+	|——services
+	|     message.js
+	|
+	|app.vue	## 主vue组件
+	|main.js    #启动配置，webpack入口文件
+</code></pre></div><p>各个文件已经做了相应的注释，以下重点讲解几个主要文件的内容和作用。</p> <p>package.json：</p> <p>npm安装依赖的json文件，每个由npm管理模块的项目下都会有这个
+package.json文件，这个文件在项目初始化时可通过<code>npm init</code>:</p> <p><img src="http://i.imgur.com/Ns1AKzn.png" alt=""></p> <p>如上图示范，在初次初始化时，按照提示分别输入package.json字段，包括：项目名字(name)、项目版本(version)、项目描述(description)和依赖(dependencies)等，有些选项并非必填，具体参数填写方式参考npm文档。</p> <p>在进行<code>npm init</code>初始化后，就会在当前目录下生成<code>package.json</code>文件，这里将<code>vue-loader-example</code>的完整<code>package.json</code>内容展示如下:</p> <div class="language- extra-class"><pre><code>{
+  &quot;name&quot;: &quot;vue-webpack-vueloader&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;description&quot;: &quot;Example using webpack with vue-loader&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --inline --hot --config build/webpack.dev.config.js&quot;,
+    &quot;build&quot;: &quot;webpack --progress --hide-modules --config build/webpack.prod.config.js&quot;,
+    &quot;test&quot;: &quot;karma start build/karma.conf.js&quot;
+  },
+  &quot;author&quot;: &quot;lijiahao&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^1.0.16&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;babel-core&quot;: &quot;^6.1.2&quot;,
+    &quot;babel-loader&quot;: &quot;^6.1.0&quot;,
+    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.1.2&quot;,
+    &quot;babel-preset-es2015&quot;: &quot;^6.1.2&quot;,
+    &quot;babel-preset-stage-0&quot;: &quot;^6.1.2&quot;,
+    &quot;babel-runtime&quot;: &quot;^5.8.0&quot;,
+    &quot;css-loader&quot;: &quot;^0.23.0&quot;,
+    &quot;eslint&quot;: &quot;^1.10.3&quot;,
+    &quot;eslint-loader&quot;: &quot;^1.3.0&quot;,
+    &quot;file-loader&quot;: &quot;^0.8.4&quot;,
+    &quot;function-bind&quot;: &quot;^1.0.2&quot;,
+    &quot;inject-loader&quot;: &quot;^2.0.1&quot;,
+    &quot;jade&quot;: &quot;^1.11.0&quot;,
+    &quot;jasmine-core&quot;: &quot;^2.4.1&quot;,
+    &quot;karma&quot;: &quot;^0.13.15&quot;,
+    &quot;karma-jasmine&quot;: &quot;^0.3.6&quot;,
+    &quot;karma-phantomjs-launcher&quot;: &quot;^0.2.1&quot;,
+    &quot;karma-spec-reporter&quot;: &quot;0.0.23&quot;,
+    &quot;karma-webpack&quot;: &quot;^1.7.0&quot;,
+    &quot;phantomjs&quot;: &quot;^1.9.19&quot;,
+    &quot;stylus-loader&quot;: &quot;^1.4.0&quot;,
+    &quot;template-html-loader&quot;: &quot;0.0.3&quot;,
+    &quot;url-loader&quot;: &quot;^0.5.7&quot;,
+    &quot;vue-hot-reload-api&quot;: &quot;^1.2.0&quot;,
+    &quot;vue-html-loader&quot;: &quot;^1.0.0&quot;,
+    &quot;vue-loader&quot;: &quot;^8.0.0&quot;,
+    &quot;vue-style-loader&quot;: &quot;^1.0.0&quot;,
+    &quot;webpack&quot;: &quot;^1.12.2&quot;,
+    &quot;webpack-dev-server&quot;: &quot;^1.12.0&quot;
+  }
+}
+</code></pre></div><p>注：1、dependencies键值内的内容，在运行<code>npm install xxx</code>后可以自动插入相应的值，如需要安装vue，运行<code>npm install vue</code>,npm就会自动安装最新版本的vue到当前<code>node_modules</code>文件夹中，dependencies的内容也会变成如下：</p> <div class="language- extra-class"><pre><code>&quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^1.0.16&quot;
+  }
+</code></pre></div><p>2、devDependencies键值内的内容是指开发过程中需要用到的依赖包，包括ES6转ES5加载器、CSS加载器等等，这部分的内容可通过<code>npm install xxx --save-dev</code>进行安装，如需要安装webpack,输入<code>npm install webpack --save-dev</code>,在devDependencies下就会写入webpack的具体安装信息。</p> <p>在有了这个完整的<code>package.json</code>文件的情况下，使用命令：<code>npm install</code>，npm就会在当前目录下载项目所需依赖，下载的文件存放在<code>node_modules</code>中，这一过程由npm自动完成，我们只需等待即可。</p> <p>通过npm安装了项目所需的依赖，包括：vue、vue-loader、webpack、babel等，这里将再下一篇博客对关键依赖进行介绍，以了解webpack的模块打包机制。</p></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=vue-js" title="标签">
+      #vue.js
+    </a><a href="/tags/?tag=webpack" title="标签">
+      #webpack
+    </a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2020/08/08, 16:08:00</span></div></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/658815/"><div>react-native run-ios内部原理探索</div></a> <span>03-05</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/3ffe0e/"><div>Android电话监听功能开发及注意事项</div></a> <span>01-22</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/85ee6e/"><div>关于Rom Hacking你可以了解到的一些事</div></a> <span>01-16</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><div class="icons"><a href="mailto:lijiahao53@gmail.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/geocld" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+     | Copyright © 2015-2020
+    <span>lijiahao | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a9bdc083.js" defer></script><script src="/assets/js/2.e5ef3fc2.js" defer></script><script src="/assets/js/16.5d434c0a.js" defer></script>
+  </body>
+</html>

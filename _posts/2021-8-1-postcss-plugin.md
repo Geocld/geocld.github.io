@@ -14,7 +14,7 @@ PostCSS是一个允许使用 JS 插件转换样式的工具。开发者可以根
 
 PostCSS和插件的工作原理其实很简单，就是先将css源码转换为AST，插件基于转换后AST的信息进行个性化处理，最后PostCSS再将处理后的AST信息转换为css源码，完成css样式转换，其流程可以归结为下图：
 
-![overview](/img/postcss/overview.png)
+![overflow](/img/postcss/overflow.png)
 
 下面我们通过实际例子看看PostCSS会将css源码转换成的AST格式：
 

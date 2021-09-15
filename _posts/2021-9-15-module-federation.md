@@ -2,7 +2,7 @@
 layout: post
 title: 关于module Federation的思考
 subtitle: webpack5新特性module Federation学习和思考
-date: 2021-9-18
+date: 2021-9-15
 author: "lijiahao"
 tags: ['webpack']
 ---

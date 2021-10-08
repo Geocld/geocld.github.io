@@ -628,7 +628,7 @@ function switchBranch (branchname) {
 
 <h3>总结</h3>
 
-Git是一个伟大的发明，Git的原理也很符合其创始人linus开发Linux时的理念“All in file”。用文本将抽象的概念实体化而不失效率，实际上Git的工作原理要复杂的多，本文只是对基本原理进行了简单的实现，如对本文的实现具体源码感兴趣，可以直接查看我的GitHub项目[gito，该项目实现了Git大部分常用功能，如深入解读，相信读者对Git的工作原理能有更深的了解。
+Git是一个伟大的发明，Git的原理也很符合其创始人linus开发Linux时的理念“All in file”。用文本将抽象的概念实体化而不失效率，实际上Git的工作原理要复杂的多，本文只是对基本原理进行了简单的实现，如对本文的实现具体源码感兴趣，可以直接查看我的GitHub项目[gito](https://github.com/Geocld/gito)，该项目实现了Git大部分常用功能，如深入解读，相信读者对Git的工作原理能有更深的了解。
 
 
 

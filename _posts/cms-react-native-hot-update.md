@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 招商证券 react-native 热更新优化实践
+title: react-native 热更新优化实践
 subtitle: 
 date: 2019-11-13
 author: "lijiahao"

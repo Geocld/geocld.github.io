@@ -142,7 +142,7 @@ hello world.
 
 接下来就是`git add`的实现，首先就是索引的设计，在执行add操作时，需要遍历一遍工作区文件，这里我将结果以JSON的形式返回，这样就可以很容易的查看目录和文件之间的层级关系，例如:
 
-```json
+```js
 { 
   '/gito/example/a.txt': { 
     metaData: { type: 'blob', length: 16, content: 'dasds hellodada\n' },
@@ -201,7 +201,7 @@ hello world.
 
 * 创建tree实体，该tree代表当前工作区根目录（如例子中的example），设计的tree数据结构如下：
 
-  ```json
+  ```js
   { 
   	type: 'tree', // 注明为tree实体
     metaData:{ 
@@ -222,7 +222,7 @@ hello world.
 
 * 创建commit实体，指向代码仓库根目录的tree实体。
 
-  ```json
+  ```js
   { 
     type: 'commit',
     tree: 'a75fdcad655ee70f94da8159dc1b84999e6e710f', // commit指向顶层tree
@@ -355,7 +355,7 @@ $ git commit -m "second commit"
 
 * 生成新的tree实体，tree内容包含了当前工作区目录的最新文件结构:
 
-  ```json
+  ```js
   { 
     type: 'tree',
     metaData:
@@ -376,7 +376,7 @@ $ git commit -m "second commit"
 
 * 生成新的commit实体，，指向当前最新的tree实体，并通过parent字段指向首次提交的commit实体，这样就形成了一个提交图谱：
 
-  ```json
+  ```js
   { 
     type: 'commit',
     tree: '1d785936850fad94d71c96ed7271d58c0e90ad0b',

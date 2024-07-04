@@ -1,7 +1,7 @@
 ---
 layout: post
-title: sparkee-自动化monorepo管理工具
-subtitle: sparkee工作原理及适用场景详解
+title: XStreaming开发手记——概述
+subtitle: 开源移动端Xbox/Xcloud串流应用
 date: 2024-7-4
 author: "lijiahao"
 tags: ['Xbox', 'streaming']

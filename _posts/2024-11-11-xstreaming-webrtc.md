@@ -1,7 +1,7 @@
 ---
 layout: post
 title: XStreaming开发手记-webrtc篇
-subtitle: 开源移动端Xbox/Xcloud串流应用
+subtitle: WebRTC在串流的实际应用
 date: 2024-11-11
 author: "lijiahao"
 tags: ['Xbox', 'streaming']
@@ -57,7 +57,7 @@ peer.createOffer({
 
 生成的SDP是一个字符串，字符串使用`\r\n`换行，每一行都是offer的属性描述。其格式化后大概内容如下(简化版)：
 
-```json
+```js
 v=0
 o=- 1182354182723121050 2 IN IP4 127.0.0.1
 s=-
@@ -264,11 +264,8 @@ for(const channel in this._webrtcDataChannelsConfig){
 	}
 ```
 
-
-local ices:
-
 经过teredo处理后:
-```json
+```js
 [
   {
     "candidate": "a=candidate:1 1 UDP 2130706431 192.168.100.234 9002 typ host ",
@@ -351,7 +348,7 @@ Teredo是一种自动隧道技术，允许IPv6设备通过IPv4网络进行通信
 
 在进行WebRTC协商获取远程ICE时，微软信令服务器也给我们返回了一个Teredo地址，即开头为`2001`的IPv6地址，如下：
 
-```json
+```js
 {
     "candidate": "a=candidate:6 1 UDP 1 2001:0000:4136:e378:8000:63bf:3fff:fdd2 9002 typ host ",
     "messageType": "iceCandidate",
@@ -398,7 +395,7 @@ if (
 ```
 经过上述代码处理后，我们会多出一个ICE候选项，即解析后的IPv4连接候选项：
 
-```json
+```js
 {
     "candidate": "a=candidate:6 1 UDP 1 22.38.123.123 9002 typ host ",
     "messageType": "iceCandidate",
